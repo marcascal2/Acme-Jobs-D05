@@ -1,0 +1,22 @@
+employer.job.list.label.reference = Job Reference
+employer.job.list.label.deadline = Deadline
+employer.job.list.label.title = Title
+employer.job.list.label.status = Status
+employer.job.list.label.descriptor = Descriptor
+employer.job.list.label.duty = Duty
+
+employer.job.form.label.reference = Job Reference:
+employer.job.form.label.title = Title:
+employer.job.form.label.status = Status:
+employer.job.form.label.deadline = Deadline:
+employer.job.form.label.salary = Salary:
+employer.job.form.label.moreInfo = More info:
+employer.job.form.label.description = Description:
+employer.job.form.label.descriptor = Descriptor:
+
+
+employer.job.form.button.duty = Duties
+
+employer.job.form.button.list-auditor-records = Audit records
+
+employer.job.form.button.return = Return

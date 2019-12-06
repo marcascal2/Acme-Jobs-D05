@@ -1,0 +1,8 @@
+authenticated.auditor_record.form.label.title = Title:
+authenticated.auditor_record.form.label.status = Status:
+authenticated.auditor_record.form.label.creationMoment = Creation date:
+authenticated.auditor_record.form.label.body = Body:
+authenticated.auditor_record.form.buttom.return = Return
+
+authenticated.auditor_record.list.label.title = Title:
+authenticated.auditor_record.list.label.moment = Creation date:

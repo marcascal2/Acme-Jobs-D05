@@ -1,0 +1,13 @@
+worker.application.list.label.reference = Referencia de la aplicación
+worker.application.list.label.moment = Fecha de creación
+worker.application.list.label.status = Estado
+worker.application.list.label.skills = Habilidades
+
+worker.application.form.label.reference = Referencia de la aplicación:
+worker.application.form.label.moment = Fecha de creación:
+worker.application.form.label.status = Estado:
+worker.application.form.label.statement = Declaración:
+worker.application.form.label.skills = Habilidades:
+worker.application.form.label.qualification = Calificaciones:
+
+worker.application.form.button.return = Volver

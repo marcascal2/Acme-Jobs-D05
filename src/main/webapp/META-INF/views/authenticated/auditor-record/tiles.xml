@@ -1,0 +1,15 @@
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+<tiles-definitions>
+	
+	<definition name="authenticated/auditor-record/list" extends="master">
+		<put-attribute name="body" type="template" value="../authenticated/auditor-record/list.jsp"/>
+	</definition>
+	
+	<definition name="authenticated/auditor-record/form" extends="master">
+		<put-attribute name="body" type="template" value="../authenticated/auditor-record/form.jsp"/>
+	</definition>
+	
+</tiles-definitions>

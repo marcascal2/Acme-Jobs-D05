@@ -1,0 +1,10 @@
+authenticated.investor-record.form.label.investorName = Nombre del inversor:
+authenticated.investor-record.form.label.sector = Sector:
+authenticated.investor-record.form.label.statement = Declaración de Inversión:
+authenticated.investor-record.form.label.stars = Estrellas:
+
+authenticated.investor-record.form.buttom.return = Volver
+
+authenticated.investor-record.list.label.investorName = Nombre del Inversor:
+authenticated.investor-record.list.label.sector = Sector:
+authenticated.investor-record.list.label.stars = Estrellas:

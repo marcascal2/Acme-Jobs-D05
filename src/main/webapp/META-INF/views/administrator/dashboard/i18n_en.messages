@@ -1,0 +1,24 @@
+administrator.dashboard.form.label.totalNumberOfAnnouncement = Total number of announcements
+administrator.dashboard.form.label.totalNumberOfCompanyRecords = Total number of company records
+administrator.dashboard.form.label.totalNumberOfInvestorRecords = Total number of investor records
+administrator.dashboard.form.label.minimumOfRewardsRequests = Minimum of rewards requests
+administrator.dashboard.form.label.maximumOfRewardsRequests = Maximum of rewards requests
+administrator.dashboard.form.label.averageOfRewardsRequests = Average of rewards requests
+administrator.dashboard.form.label.standardDeviationOfRewardsRequests = Standard deviation of rewards requests
+administrator.dashboard.form.label.minimumOfRewardsOffers = Minimum of rewards offers
+administrator.dashboard.form.label.maximumOfRewardsOffers = Maximum of rewards offers
+administrator.dashboard.form.label.averageOfRewardsOffers = Average of rewards offers
+administrator.dashboard.form.label.standardDeviationOfRewardsOffers = Standard deviation of rewards offers
+administrator.dashboard.form.label.firstChart = Number of companies per sector
+administrator.dashboard.form.label.secondChart = Number of investors per sector
+
+administrator.dashboard.form.label.averageNumberOfJobsPerEmployer = Average number of jobs per Employer 
+administrator.dashboard.form.label.averageNumberOfApplicationsPerEmployer = Average number of applications per employer 
+administrator.dashboard.form.label.averageNumberOfApplicationsPerWorker = Average number of applications per worker 
+administrator.dashboard.form.label.ratioOfDraftJobs = Ratio of draft jobs 
+administrator.dashboard.form.label.ratioOfPublishedJobs = Ratio of published jobs 
+administrator.dashboard.form.label.ratioOfPendingApplications = Ratio of pending applications 
+administrator.dashboard.form.label.ratioOfAcceptedApplications = Ratio of accepted applications 
+administrator.dashboard.form.label.ratioOfRejectedApplications = Ratio of rejected applications
+administrator.dashboard.form.label.thirdChart = Ratio of jobs grouped by status
+administrator.dashboard.form.label.fourthChart = Ratio of jobs grouped by status

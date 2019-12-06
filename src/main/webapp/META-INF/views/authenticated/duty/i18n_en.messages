@@ -1,0 +1,11 @@
+authenticated.job.duty.form.label.job = Job
+authenticated.job.duty.list.label.title = Title
+authenticated.job.duty.list.label.description = Description
+authenticated.job.duty.list.label.percentage = Percentage
+
+authenticated.job.duty.form.label.title = Title:
+authenticated.job.duty.form.label.description = Description:
+authenticated.job.duty.form.label.percentage = Percentage:
+
+authenticated.job.duty.form.button.return = Return
+

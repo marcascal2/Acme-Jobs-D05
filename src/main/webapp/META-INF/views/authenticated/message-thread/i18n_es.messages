@@ -1,0 +1,11 @@
+authenticated.message-thread.list.label.title = Título
+authenticated.message-thread.list.label.moment = Fecha de creación
+
+authenticated.message-thread.form.label.title = Título:
+authenticated.message-thread.form.label.moment = Fecha de creación:
+authenticated.message-thread.form.label.message-title = Título de mensaje:
+authenticated.message-thread.form.label.message = Mensaje
+authenticated.message-thread.form.label.message-date = Fecha:
+
+authenticated.message-thread.form.button.return = Volver
+authenticated.message-thread.form.button.list-messages = Ver mensajes

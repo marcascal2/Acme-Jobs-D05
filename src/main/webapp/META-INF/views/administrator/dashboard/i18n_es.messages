@@ -1,0 +1,24 @@
+administrator.dashboard.form.label.totalNumberOfAnnouncement = Número total de anuncios
+administrator.dashboard.form.label.totalNumberOfCompanyRecords = Número total de registros de compañias
+administrator.dashboard.form.label.totalNumberOfInvestorRecords = Número total de registros de inversionistas
+administrator.dashboard.form.label.minimumOfRewardsRequests = Mínimo de solicitudes de recompensa
+administrator.dashboard.form.label.maximumOfRewardsRequests = Máximo de solicitudes de recompensa
+administrator.dashboard.form.label.averageOfRewardsRequests = Media de solicitudes de recompensa
+administrator.dashboard.form.label.standardDeviationOfRewardsRequests = Desviación estándar de solicitudes de recompensa
+administrator.dashboard.form.label.minimumOfRewardsOffers = Mínimo de ofertas de recompensa
+administrator.dashboard.form.label.maximumOfRewardsOffers = Máximo de ofertas de recompensa
+administrator.dashboard.form.label.averageOfRewardsOffers = Media de ofertas de recompensa
+administrator.dashboard.form.label.standardDeviationOfRewardsOffers = Desviación estándar de ofertas de recompensa
+administrator.dashboard.form.label.firstChart = Número de compañías por sector
+administrator.dashboard.form.label.secondChart = Número de inversores por sector
+
+administrator.dashboard.form.label.averageNumberOfJobsPerEmployer = Media de trabajos por empleado
+administrator.dashboard.form.label.averageNumberOfApplicationsPerEmployer = Media de solicitudes por empleado
+administrator.dashboard.form.label.averageNumberOfApplicationsPerWorker = Media de solicitudes por trabajador
+administrator.dashboard.form.label.ratioOfDraftJobs = Ratio de trabajos en el borrador
+administrator.dashboard.form.label.ratioOfPublishedJobs = Ratio de trabajos publicados 
+administrator.dashboard.form.label.ratioOfPendingApplications = Ratio de solicitudes pendientes
+administrator.dashboard.form.label.ratioOfAcceptedApplications = Ratio de solicitudes aceptadas
+administrator.dashboard.form.label.ratioOfRejectedApplications = Ratio de solicitudes rechazadas
+administrator.dashboard.form.label.thirdChart = Ratio de empleos agrupados por su estado
+administrator.dashboard.form.label.fourthChart = Ratio de solicitudes agurpadas por su estado

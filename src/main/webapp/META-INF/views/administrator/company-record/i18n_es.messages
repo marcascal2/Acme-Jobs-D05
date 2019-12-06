@@ -1,0 +1,19 @@
+administrator.company_record.form.label.name = Nombre:
+administrator.company_record.form.label.sector = Sector:
+administrator.company_record.form.label.ceoName = Nombre del CEO:
+administrator.company_record.form.label.description = Descripción:
+administrator.company_record.form.label.webSite = Sitio Web:
+administrator.company_record.form.label.phone = Teléfono:
+administrator.company_record.form.label.email = Email:
+administrator.company_record.form.label.incorporated = Está incorporado:
+administrator.company_record.form.label.stars = Estrellas:
+administrator.company_record.form.button.return = Volver
+administrator.company_record.form.button.update = Actualizar
+administrator.company_record.form.button.delete = Eliminar
+administrator.company_record.form.button.create = Crear
+
+
+administrator.company_record.list.label.name = Nombre:
+administrator.company_record.list.label.sector = Sector:
+administrator.company_record.list.label.phone = Teléfono:
+administrator.company_record.list.label.ceoName = Nombre del CEO:

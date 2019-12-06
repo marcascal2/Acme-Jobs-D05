@@ -1,0 +1,10 @@
+employer.job.duty.form.label.job = Trabajo
+employer.job.duty.list.label.title = Título
+employer.job.duty.list.label.description = Descripción
+employer.job.duty.list.label.percentage = Porcentaje
+
+employer.job.duty.form.label.title = Título:
+employer.job.duty.form.label.description = Descripción:
+employer.job.duty.form.label.percentage = Porcentaje:
+
+employer.job.duty.form.button.return = Volver

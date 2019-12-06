@@ -1,0 +1,15 @@
+auditor.job.list.label.reference = Referencia
+auditor.job.list.label.deadline = Fecha de fin
+auditor.job.list.label.title = Título
+auditor.job.list.label.status = Estado
+
+auditor.job.form.label.reference = Referencia:
+auditor.job.form.label.title = Título:
+auditor.job.form.label.status = Estado:
+auditor.job.form.label.deadline = Fecha de fin:
+auditor.job.form.label.salary = Salario:
+auditor.job.form.label.moreInfo = Más info:
+auditor.job.form.label.description = Descripción:
+
+auditor.job.form.button.list-auditor-records = Auditorías
+auditor.job.form.button.return = Volver

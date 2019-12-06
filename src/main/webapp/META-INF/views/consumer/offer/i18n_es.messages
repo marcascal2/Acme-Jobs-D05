@@ -1,0 +1,21 @@
+consumer.offer.list.label.ticker = Ticker
+consumer.offer.list.label.title = Título
+consumer.offer.list.label.moment = Fecha de creación
+consumer.offer.list.label.deadline = Fecha de fin
+consumer.offer.list.label.description = Descripción
+consumer.offer.list.label.reward = Recompensa
+
+consumer.offer.form.label.ticker = Ticker
+consumer.offer.form.label.title = Título
+consumer.offer.form.label.moment = Fecha de creación
+consumer.offer.form.label.deadline = Fecha de fin
+consumer.offer.form.label.description = Descripción
+consumer.offer.form.label.reward = Recompensa
+consumer.offer.form.label.checkbox = Confirmar
+
+
+consumer.provider.form.button.return = Volver
+
+consumer.offer.form.error.ticker = Ya existe una oferta con este ticker
+consumer.offer.form.error.deadline = La fecha límite tiene que ser futura
+consumer.offer.form.error.accepted = Tienes que confirmar

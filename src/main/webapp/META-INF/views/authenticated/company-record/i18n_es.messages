@@ -1,0 +1,15 @@
+authenticated.company_record.form.label.name = Nombre:
+authenticated.company_record.form.label.sector = Sector:
+authenticated.company_record.form.label.ceoName = Nombre del CEO:
+authenticated.company_record.form.label.description = Descripción:
+authenticated.company_record.form.label.webSite = Sitio Web:
+authenticated.company_record.form.label.phone = Teléfono:
+authenticated.company_record.form.label.email = Email:
+authenticated.company_record.form.label.incorporated = Está Incorporado:
+authenticated.company_record.form.label.stars = Estrellas:
+authenticated.company_record.form.buttom.return = Volver
+
+authenticated.company_record.list.label.name = Nombre:
+authenticated.company_record.list.label.sector = Sector:
+authenticated.company_record.list.label.name = Teléfono:
+authenticated.company_record.list.label.ceoName = Nombre del CEO:

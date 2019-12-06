@@ -1,0 +1,15 @@
+authenticated.offer.list.label.ticker = Ticker
+authenticated.offer.list.label.title = Title
+authenticated.offer.list.label.moment = Creation date
+authenticated.offer.list.label.deadline = End date
+authenticated.offer.list.label.description = Description
+authenticated.offer.list.label.reward = Reward
+
+authenticated.offer.form.label.ticker = Ticker
+authenticated.offer.form.label.title = Title
+authenticated.offer.form.label.moment = Creation date
+authenticated.offer.form.label.deadline = End date
+authenticated.offer.form.label.description = Description
+authenticated.offer.form.label.reward = Reward
+
+authenticated.provider.form.button.return = Return

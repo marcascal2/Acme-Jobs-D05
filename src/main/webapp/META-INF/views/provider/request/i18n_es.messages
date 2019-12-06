@@ -1,0 +1,19 @@
+provider.request.list.label.moment = Fecha
+provider.request.list.label.deadline = Fecha límite
+provider.request.list.label.title = Titulo
+
+provider.request.form.label.title = Titulo:
+provider.request.form.label.moment = Fecha:
+provider.request.form.label.deadline = Fecha límite:
+provider.request.form.label.text = Descripción:
+provider.request.form.label.reward = Recompensa:
+provider.request.form.label.ticker = Ticker:
+provider.request.form.label.checkbox = Confirmo la creación
+
+provider.request.form.button.create = Crear
+provider.request.form.button.update = Actualizar
+provider.request.form.button.delete = Eliminar
+provider.request.form.button.return = Volver
+
+provider.request.form.error.ticker = Ya existe una solicitud con este ticker
+provider.request.form.error.accepted = Debe cofirmar la creación
