@@ -118,6 +118,10 @@ master.menu.sponsor.commercial-banner = Banners comerciales
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
+master.menu.user-account.authenticated.employer.form.title.create = Registrar como jefe
+master.menu.user-account.authenticated.employer.form.title.update = Actualizar datos de jefe
+master.menu.user-account.authenticated.worker.form.title.create = Registrar como trabajador
+master.menu.user-account.authenticated.worker.form.title.update = Actualizar datos de trabajador
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
