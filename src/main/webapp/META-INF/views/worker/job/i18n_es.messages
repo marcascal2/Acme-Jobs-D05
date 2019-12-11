@@ -1,0 +1,21 @@
+worker.job.list.label.reference = Referencia del trabajo
+worker.job.list.label.deadline = Fecha de fin
+worker.job.list.label.title = Título
+worker.job.list.label.status = Estado
+
+worker.job.form.label.reference = Referencia del trabajo:
+worker.job.form.label.title = Título:
+worker.job.form.label.status = Estado:
+worker.job.form.label.deadline = Fecha de fin:
+worker.job.form.label.salary = Salario:
+worker.job.form.label.moreInfo = Más info:
+worker.job.form.label.description = Descripción:
+worker.job.form.label.descriptor = Descriptor:
+
+
+worker.job.form.button.duty = Duties
+
+worker.job.form.button.list-auditor-records = Auditorías
+worker.job.form.button.apply = Solicitar trabajo
+
+worker.job.form.button.return = Volver

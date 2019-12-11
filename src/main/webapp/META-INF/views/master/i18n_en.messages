@@ -104,6 +104,7 @@ master.menu.consumer.offer.create = Create offer
 
 master.menu.worker = Worker
 master.menu.worker.application = My applications
+master.menu.worker.apply-for-jobs = Available jobs
 
 # master.menu.employer ##########################################################
 
