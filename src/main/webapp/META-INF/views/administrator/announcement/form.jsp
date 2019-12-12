@@ -5,11 +5,11 @@
 
 <acme:form>
 	<acme:form-textbox code="administrator.announcement.form.label.title" path="title" />
-	<jslt:if test="${command != 'create'}">
+	<jstl:if test="${command != 'create'}">
 		<acme:form-moment code="administrator.announcement.form.label.moment"
 		 path="moment"
 		 readonly="true"/>
-	</jslt:if>
+	</jstl:if>
 	<acme:form-url code="administrator.announcement.form.label.moreInfo" path="moreInfo" />
 	<acme:form-textarea code="administrator.announcement.form.label.text" path="text" />
 	<acme:form-submit test="${command == 'show'}" 
