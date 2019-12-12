@@ -192,3 +192,57 @@ new Chart(context, {
     options: options
 });
 </script>
+
+<canvas id="myChart5" width="400" height="400"></canvas>
+
+<script>                        
+   
+var data = {
+	    labels: [ 
+	    	<jstl:forEach var="label" items="${labels}">
+    			"<jstl:out value="${label}"/>",
+			</jstl:forEach>
+	    ],
+	    datasets: [{
+	        borderColor: "#4BD4D4",
+	        label: "PENDING",
+	        fill: false,
+	        data: [ 
+	        	<jstl:forEach var="pending" items="${numberOfPendingApplicationsPerDay}">
+	   		  		<jstl:out value="${pending}"/>,
+	   			</jstl:forEach>
+	       ]
+	     }, {
+	    	borderColor: "#3CB371",
+	      	label: "ACCEPTED",
+	      	fill: false,
+	      	data: [ 
+	        	<jstl:forEach var="accepted" items="${numberOfAcceptedApplicationsPerDay}">
+		    		<jstl:out value="${accepted}"/>,
+				</jstl:forEach>
+	        ]
+	     }, {
+	    	borderColor: "#F5FF57",
+		 	label: "REJECTED",
+		 	fill: false,
+			data: [ 
+				<jstl:forEach var="rejected" items="${numberOfRejectedApplicationsPerDay}">
+	    			<jstl:out value="${rejected}"/>,
+				</jstl:forEach>
+			]
+		}
+	    ]
+	};
+
+var context = document.getElementById('myChart5').getContext('2d');
+new Chart(context, {
+    type: 'line',
+    data: data,
+    options: {
+        title: {
+          display: true,
+          text: '<acme:message code="administrator.dashboard.form.label.fifthChart"/>'
+        }
+      }
+});
+</script>
