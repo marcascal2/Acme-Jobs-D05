@@ -75,13 +75,13 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select 1.0 * count(j) / (select count(k) from Job k) from Job j where j.status = acme.entities.jobs.JobStatus.PUBLISHED")
 	Double ratioOfPublishedJobs();
 
-	@Query("select a.moment, count(*) from Application a where a.status = acme.entities.applications.ApplicationStatus.PENDING and a.moment >= ?1 group by a.moment order by a.moment")
+	@Query("select a.moment, count(*) from Application a where a.status = acme.entities.applications.ApplicationStatus.PENDING and a.moment >= ?1 group by a.moment")
 	List<String[]> numberOfPendingApplicationsPerDay(Date limit_date);
 
-	@Query("select a.moment, count(a) from Application a where a.status = acme.entities.applications.ApplicationStatus.ACCEPTED and a.moment >= ?1 group by a.moment order by a.moment")
+	@Query("select a.moment, count(a) from Application a where a.status = acme.entities.applications.ApplicationStatus.ACCEPTED and a.moment >= ?1 group by a.moment")
 	List<String[]> numberOfAcceptedApplicationsPerDay(Date limit_date);
 
-	@Query("select a.moment, count(a) from Application a where a.status = acme.entities.applications.ApplicationStatus.REJECTED and a.moment >= ?1 group by a.moment order by a.moment")
+	@Query("select a.moment, count(a) from Application a where a.status = acme.entities.applications.ApplicationStatus.REJECTED and a.moment >= ?1 group by a.moment")
 	List<String[]> numberOfRejectedApplicationsPerDay(Date limit_date);
 
 }
