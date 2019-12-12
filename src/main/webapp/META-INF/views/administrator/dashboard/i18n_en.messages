@@ -22,3 +22,5 @@ administrator.dashboard.form.label.ratioOfAcceptedApplications = Ratio of accept
 administrator.dashboard.form.label.ratioOfRejectedApplications = Ratio of rejected applications
 administrator.dashboard.form.label.thirdChart = Ratio of jobs grouped by status
 administrator.dashboard.form.label.fourthChart = Ratio of jobs grouped by status
+
+administrator.dashboard.form.label.fifthChart = Number of pending, accepted and rejected applications per day during the last four weeks

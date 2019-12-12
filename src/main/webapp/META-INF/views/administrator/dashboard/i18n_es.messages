@@ -22,3 +22,5 @@ administrator.dashboard.form.label.ratioOfAcceptedApplications = Ratio de solici
 administrator.dashboard.form.label.ratioOfRejectedApplications = Ratio de solicitudes rechazadas
 administrator.dashboard.form.label.thirdChart = Ratio de empleos agrupados por su estado
 administrator.dashboard.form.label.fourthChart = Ratio de solicitudes agurpadas por su estado
+
+administrator.dashboard.form.label.fifthChart = Número de solicitudes pendientes, aceptadas y rechazadas por día a lo largo de las últimas 4 semanas
