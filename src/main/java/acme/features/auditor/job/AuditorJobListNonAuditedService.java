@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.auditor_records.AuditorRecord;
+import acme.entities.audit_records.AuditRecord;
 import acme.entities.jobs.Job;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -42,7 +42,7 @@ public class AuditorJobListNonAuditedService implements AbstractListService<Auth
 	public Collection<Job> findMany(final Request<Job> request) {
 		assert request != null;
 
-		Collection<AuditorRecord> auditorRecords;
+		Collection<AuditRecord> auditorRecords;
 		Collection<Job> allJobs;
 		Collection<Job> auditedJobs;
 		Collection<Job> result;

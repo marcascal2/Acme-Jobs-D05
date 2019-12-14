@@ -1,31 +1,31 @@
 
-package acme.features.authenticated.auditor_record;
+package acme.features.authenticated.audit_record;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.auditor_records.AuditorRecord;
+import acme.entities.audit_records.AuditRecord;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuthenticatedAuditorRecordShowService implements AbstractShowService<Authenticated, AuditorRecord> {
+public class AuthenticatedAuditRecordShowService implements AbstractShowService<Authenticated, AuditRecord> {
 
 	@Autowired
-	private AuthenticatedAuditorRecordRepository repository;
+	private AuthenticatedAuditRecordRepository repository;
 
 
 	@Override
-	public boolean authorise(final Request<AuditorRecord> request) {
+	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void unbind(final Request<AuditorRecord> request, final AuditorRecord entity, final Model model) {
+	public void unbind(final Request<AuditRecord> request, final AuditRecord entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -34,10 +34,10 @@ public class AuthenticatedAuditorRecordShowService implements AbstractShowServic
 	}
 
 	@Override
-	public AuditorRecord findOne(final Request<AuditorRecord> request) {
+	public AuditRecord findOne(final Request<AuditRecord> request) {
 		assert request != null;
 
-		AuditorRecord result;
+		AuditRecord result;
 		int id;
 
 		id = request.getModel().getInteger("id");

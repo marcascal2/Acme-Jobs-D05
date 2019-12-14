@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.applications.Application;
-import acme.entities.auditor_records.AuditorRecord;
+import acme.entities.audit_records.AuditRecord;
 import acme.entities.descriptors.Descriptor;
 import acme.entities.roles.Employer;
 import acme.framework.datatypes.Money;
@@ -34,55 +34,55 @@ public class Job extends DomainEntity {
 
 	//Serialisation identifier --------------------------------------------------------
 
-	private static final long			serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	//Attributes ----------------------------------------------------------------------
 
 	@Column(unique = true)
 	@NotBlank
 	@Length(min = 5, max = 10)
-	private String						reference;
+	private String					reference;
 
 	@NotNull
-	private JobStatus					status;
+	private JobStatus				status;
 
 	@NotBlank
-	private String						title;
+	private String					title;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date						deadline;
+	private Date					deadline;
 
 	@NotNull
 	@Valid
-	private Money						salary;
+	private Money					salary;
 
 	@NotBlank
-	private String						description;
+	private String					description;
 
 	@URL
-	private String						moreInfo;
+	private String					moreInfo;
 
-	private boolean						finalMode;
+	private boolean					finalMode;
 
 	//Relationships -------------------------------------------------------------------
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Employer					employer;
+	private Employer				employer;
 
 	@NotNull
 	@Valid
 	@OneToOne(mappedBy = "job")
-	private Descriptor					descriptor;
+	private Descriptor				descriptor;
 
 	@NotNull
 	@Valid
 	@OneToMany(mappedBy = "job")
-	private Collection<Application>		application;
+	private Collection<Application>	application;
 
 	@Valid
 	@OneToMany(mappedBy = "job")
-	private Collection<AuditorRecord>	auditorRecords;
+	private Collection<AuditRecord>	auditorRecords;
 }

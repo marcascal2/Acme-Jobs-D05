@@ -1630,56 +1630,56 @@
 	
 	<!-- Auditor Records ****************** -->
 	
-	<bean name="auditorRecord1" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 1 of auditor 1" />
+	<bean name="AuditRecord1" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 1 of auditor 1" />
 		<property name="status" value="draft" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record 1 for R and D project" />
+		<property name="body" value="Audit Record 1 for R and D project" />
 		<property name="job" ref="job4" />
 		<property name="auditor" ref="auditor1UserAccount"/>
 	</bean>
 	
-	<bean name="auditorRecord2" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 2 of auditor 1" />
+	<bean name="AuditRecord2" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 2 of auditor 1" />
 		<property name="status" value="draft" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record 2 for a web functionality updating" />
+		<property name="body" value="Audit Record 2 for a web functionality updating" />
 		<property name="job" ref="job2" />
 		<property name="auditor" ref="auditor1UserAccount"/>
 	</bean>
 	
-	<bean name="auditorRecord3" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 1 of auditor 2" />
+	<bean name="AuditRecord3" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 1 of auditor 2" />
 		<property name="status" value="draft" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record 2 for R and D project" />
+		<property name="body" value="Audit Record 2 for R and D project" />
 		<property name="job" ref="job4" />
 		<property name="auditor" ref="auditor2UserAccount"/>
 	</bean>
 
-	<bean name="auditorRecord4" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 3 of auditor 1" />
+	<bean name="AuditRecord4" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 3 of auditor 1" />
 		<property name="status" value="published" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record for a project management" />
+		<property name="body" value="Audit Record for a project management" />
 		<property name="job" ref="job3" />
 		<property name="auditor" ref="auditor1UserAccount"/>
 	</bean>
 	
-	<bean name="auditorRecord5" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 2 of auditor 2" />
+	<bean name="AuditRecord5" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 2 of auditor 2" />
 		<property name="status" value="published" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record for web development" />
+		<property name="body" value="Audit Record for web development" />
 		<property name="job" ref="job1" />
 		<property name="auditor" ref="auditor2UserAccount"/>
 	</bean>
 	
-	<bean name="auditorRecord6" class="acme.entities.auditor_records.AuditorRecord">
-		<property name="title" value="Auditor record 3 of auditor 2" />
+	<bean name="AuditRecord6" class="acme.entities.audit_records.AuditRecord">
+		<property name="title" value="Audit record 3 of auditor 2" />
 		<property name="status" value="published" />
 		<property name="creationMoment" value="2018/07/12 12:55" />
-		<property name="body" value="Auditor Record for a valet job" />
+		<property name="body" value="Audit Record for a valet job" />
 		<property name="job" ref="job8" />
 		<property name="auditor" ref="auditor2UserAccount"/>
 	</bean>

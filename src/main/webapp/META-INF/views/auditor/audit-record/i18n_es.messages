@@ -1,0 +1,8 @@
+auditor.audit_record.form.label.title = Título:
+auditor.audit_record.form.label.status = Estado:
+auditor.audit_record.form.label.creationMoment = Fecha de creación:
+auditor.audit_record.form.label.body = Contenido:
+auditor.audit_record.form.buttom.return = Volver
+
+auditor.audit_record.list.label.title = Título:
+auditor.audit_record.list.label.moment = Fecha de creación:

@@ -1,5 +1,5 @@
 
-package acme.entities.auditor_records;
+package acme.entities.audit_records;
 
 import java.util.Date;
 
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class AuditorRecord extends DomainEntity {
+public class AuditRecord extends DomainEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
