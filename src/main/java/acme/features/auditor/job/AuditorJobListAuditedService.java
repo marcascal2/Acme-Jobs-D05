@@ -42,13 +42,13 @@ public class AuditorJobListAuditedService implements AbstractListService<Authent
 	public Collection<Job> findMany(final Request<Job> request) {
 		assert request != null;
 
-		Collection<AuditRecord> auditorRecords;
+		Collection<AuditRecord> auditRecords;
 		Collection<Job> result;
 		Principal principal;
 		principal = request.getPrincipal();
 
-		auditorRecords = this.repository.findAuditedJobs(principal.getAccountId());
-		result = auditorRecords.stream().map(x -> x.getJob()).collect(Collectors.toList());
+		auditRecords = this.repository.findAuditedJobs(principal.getAccountId());
+		result = auditRecords.stream().map(x -> x.getJob()).collect(Collectors.toList());
 
 		return result;
 	}

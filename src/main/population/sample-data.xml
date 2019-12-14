@@ -1628,7 +1628,7 @@
 		<property name="messageThread" ref="messageThread4"/>
 	</bean>
 	
-	<!-- Auditor Records ****************** -->
+	<!-- Audit Records ****************** -->
 	
 	<bean name="AuditRecord1" class="acme.entities.audit_records.AuditRecord">
 		<property name="title" value="Audit record 1 of auditor 1" />
