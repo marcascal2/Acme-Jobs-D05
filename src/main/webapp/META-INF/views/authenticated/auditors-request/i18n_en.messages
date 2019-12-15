@@ -1,0 +1,5 @@
+authenticated.auditors-request.form.label.firm = Firm:
+authenticated.auditors-request.form.label.responsabilityStatement = Responsability statement:
+authenticated.auditors-request.form.button.create = Register
+authenticated.auditors-request.form.button.return = Return
+
