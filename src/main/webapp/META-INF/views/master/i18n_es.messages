@@ -49,6 +49,7 @@ master.menu.authenticated.challenge = Desafíos
 master.menu.authenticated.company-record= Compañías
 master.menu.authenticated.job = Trabajos
 master.menu.authenticated.message-thread = Hilos de mensajes
+master.menu.authenticated.message-thread.create = Crear hilo de mensajes
 
 # master.menu.administrator ###################################################
 

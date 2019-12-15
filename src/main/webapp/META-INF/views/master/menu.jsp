@@ -56,6 +56,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.company-record" action="/authenticated/company-record/list" />
 			<acme:menu-suboption code="master.menu.authenticated.job" action="/authenticated/job/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.message-thread" action="/authenticated/message-thread/list_mine"/>
+			<acme:menu-suboption code="master.menu.authenticated.message-thread.create" action="/authenticated/message-thread/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">

@@ -50,6 +50,7 @@ master.menu.authenticated.challenge = Challenges
 master.menu.authenticated.company-record= Companies
 master.menu.authenticated.job = Jobs
 master.menu.authenticated.message-thread = Message Threads
+master.menu.authenticated.message-thread.create = Create message thread
 
 # master.menu.administrator ###################################################
 
