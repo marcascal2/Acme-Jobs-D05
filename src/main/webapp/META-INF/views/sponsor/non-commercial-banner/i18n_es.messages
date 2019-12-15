@@ -18,4 +18,11 @@ sponsor.non-commercial-banner.form.label.picture = Fotografía:
 sponsor.non-commercial-banner.form.label.slogan = Eslogan:
 sponsor.non-commercial-banner.form.label.target = Target:
 sponsor.non-commercial-banner.form.label.jingle = Sonido:
+
+sponsor.non-commercial-banner.form.error.span = El eslogan es considerado spam, por favor cámbielo
+
+
+sponsor.non-commercial-banner.form.button.create = Crear
+sponsor.non-commercial-banner.form.button.update = Actualizar
+sponsor.non-commercial-banner.form.button.delete = Eliminar
 sponsor.non-commercial-banner.form.button.return = Volver

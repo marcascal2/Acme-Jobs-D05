@@ -116,7 +116,10 @@ master.menu.employer.application = My Applications
 
 master.menu.sponsor = Sponsor
 master.menu.sponsor.non-commercial-banner = Non-commercial banners
+master.menu.sponsor.non-commercial-banner.create = Create non-commercial banner
 master.menu.sponsor.commercial-banner = Commercial banners 
+master.menu.sponsor.commercial-banner.create = Create commercial banner
+
 
 # master.menu.user-account ####################################################
 
