@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.descriptors.Descriptor;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Auditor;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuditorJobShowService implements AbstractShowService<Authenticated, Job> {
+public class AuditorJobShowService implements AbstractShowService<Auditor, Job> {
 
 	@Autowired
 	private AuditorJobRepository repository;

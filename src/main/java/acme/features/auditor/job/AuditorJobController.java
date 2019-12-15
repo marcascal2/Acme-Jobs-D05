@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import acme.components.CustomCommand;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Auditor;
 import acme.framework.components.BasicCommand;
 import acme.framework.controllers.AbstractController;
-import acme.framework.entities.Authenticated;
 
 @Controller
 @RequestMapping("/auditor/job/")
-public class AuditorJobController extends AbstractController<Authenticated, Job> {
+public class AuditorJobController extends AbstractController<Auditor, Job> {
 
 	@Autowired
 	private AuditorJobListAuditedService	listAuditedService;

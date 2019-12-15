@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.audit_records.AuditRecord;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Auditor;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuditorJobListNonAuditedService implements AbstractListService<Authenticated, Job> {
+public class AuditorJobListNonAuditedService implements AbstractListService<Auditor, Job> {
 
 	@Autowired
 	AuditorJobRepository repository;
