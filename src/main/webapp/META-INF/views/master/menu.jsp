@@ -99,6 +99,10 @@
 			<acme:menu-suboption code="master.menu.user-account.authenticated.employer.form.title.update" action="/authenticated/employer/update" access="hasRole('Employer')"/>
 			<acme:menu-suboption code="master.menu.user-account.authenticated.worker.form.title.create" action="/authenticated/worker/create" access="!hasRole('Worker')"/>
 			<acme:menu-suboption code="master.menu.user-account.authenticated.worker.form.title.update" action="/authenticated/worker/update" access="hasRole('Worker')"/>
+			
+						<acme:menu-suboption code="master.menu.user-account.authenticated.sponsor.form.title.create" action="/authenticated/sponsor/create" access="!hasRole('Sponsor')"/>
+			<acme:menu-suboption code="master.menu.user-account.authenticated.sponsor.form.title.update" action="/authenticated/sponsor/update" access="hasRole('Sponsor')"/>
+			
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update" />
 			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create"
 				access="!hasRole('Provider')" />
