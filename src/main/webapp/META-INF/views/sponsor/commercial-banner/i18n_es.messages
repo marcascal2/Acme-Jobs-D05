@@ -18,6 +18,9 @@ sponsor.commercial-banner.form.label.picture = Fotografía:
 sponsor.commercial-banner.form.label.slogan = Eslogan:
 sponsor.commercial-banner.form.label.target = Target:
 sponsor.commercial-banner.form.label.credit-card = Tarjeta de crédito:
+
+sponsor.commercial-banner.form.error.span = El eslogan es considerado spam, por favor cámbielo
+
 sponsor.commercial-banner.form.button.create = Crear
 sponsor.commercial-banner.form.button.update = Actualizar
 sponsor.commercial-banner.form.button.delete = Borrar
