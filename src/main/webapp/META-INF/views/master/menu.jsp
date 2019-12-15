@@ -80,6 +80,7 @@
 		<acme:menu-option code="master.menu.employer" access="hasRole('Employer')">
 			<acme:menu-suboption code="master.menu.employer.job" action="/employer/job/list_mine"/>
 			<acme:menu-suboption code="master.menu.employer.application" action="/employer/application/list_mine"/>
+			<acme:menu-suboption code="master.menu.employer.job.create" action="/employer/job/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">

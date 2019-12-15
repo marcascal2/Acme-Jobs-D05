@@ -6,11 +6,23 @@
 
 <acme:form>
 
-	<acme:form-textbox code="employer.job.duty.form.label.job" path="job" />
+	<acme:form-textbox code="employer.duty.list.label.job" path="job" />
 
-	<acme:form-textbox code="employer.job.duty.form.label.title" path="title" />
-	<acme:form-textbox code="employer.job.duty.form.label.description" path="description" />
-	<acme:form-textbox code="employer.job.duty.form.label.percentage" path="percentageTimeForWeek" />
+	<acme:form-textbox code="employer.duty.form.label.title" path="title" />
+	<acme:form-textbox code="employer.duty.form.label.description" path="description" />
+	<acme:form-textbox code="employer.duty.form.label.percentage" path="percentageTimeForWeek" />
 
-	<acme:form-return code="employer.job.duty.form.button.return" />
+	<acme:form-submit method="post" test="${command == 'create'}" 
+		code="employer.duty.form.button.create" 
+		action="/employer/duty/create?descriptor_id=${descriptor_id }"/>
+		
+	<acme:form-submit test="${command == 'show'}" 
+		code="employer.duty.form.button.update" 
+		action="/employer/duty/update"/>
+	
+	<acme:form-submit test="${command == 'update'}" 
+		code="employer.duty.form.button.update" 
+		action="/employer/duty/update"/>
+	
+	<acme:form-return code="employer.duty.form.button.return" />
 </acme:form>

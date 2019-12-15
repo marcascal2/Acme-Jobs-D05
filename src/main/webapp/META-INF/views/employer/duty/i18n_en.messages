@@ -1,11 +1,16 @@
-employer.job.duty.form.label.job = Job
-employer.job.duty.list.label.title = Title
-employer.job.duty.list.label.description = Description
-employer.job.duty.list.label.percentage = Percentage
+employer.duty.list.label.job = Job
+employer.duty.list.label.title = Title
+employer.duty.list.label.description = Description
+employer.duty.list.label.percentage = Percentage
 
-employer.job.duty.form.label.title = Title:
-employer.job.duty.form.label.description = Description:
-employer.job.duty.form.label.percentage = Percentage:
+employer.duty.form.label.title = Title:
+employer.duty.form.label.description = Description:
+employer.duty.form.label.percentage = Percentage:
 
-employer.job.duty.form.button.return=Return
+employer.duty.form.button.create = Create duty
+employer.duty.form.button.update = Update duty
+employer.duty.form.button.return=Return
+
+employer.duty.form.error.percentage = Percentage must be 100 in final mode
+employer.duty.form.error.percentageLimit = Percentage must be between 0 and 100
 

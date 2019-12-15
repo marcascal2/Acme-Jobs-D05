@@ -33,7 +33,10 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "referenceNumber", "moment", "status", "skills");
+
+		request.unbind(entity, model, "referenceNumber", "moment", "status", "skills", "justification");
+
+		model.setAttribute("job_id", request.getServletRequest().getParameter("job_id"));
 	}
 
 	@Override
@@ -41,8 +44,26 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 		assert request != null;
 		Collection<Application> result;
 		Principal principal;
-		principal = request.getPrincipal();
-		result = this.repository.findManyByEmployerId(principal.getActiveRoleId());
+		String jobId;
+
+		jobId = request.getServletRequest().getParameter("job_id");
+
+		if (request.getServletRequest().getParameter("job_id") == null) {
+			principal = request.getPrincipal();
+			result = this.repository.findManyByEmployerId(principal.getActiveRoleId());
+		} else {
+
+			if (request.getServletRequest().getParameter("group_by") == "reference") {
+				result = this.repository.groupedByReference();
+			} else if (request.getServletRequest().getParameter("group_by") == "status") {
+				result = this.repository.groupedByStatus();
+			} else if (request.getServletRequest().getParameter("group_by") == "moment") {
+				result = this.repository.groupedByMoment();
+			} else {
+				result = this.repository.findManyByJobId(Integer.parseInt(jobId));
+			}
+		}
+
 		return result;
 	}
 

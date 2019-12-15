@@ -108,6 +108,7 @@ master.menu.worker.application = Mis aplicaciones
 master.menu.employer = Empleado
 master.menu.employer.job = Mis trabajos
 master.menu.employer.application = Mis aplicaciones
+master.menu.employer.job.create = Crear trabajo
 
 # master.menu.sponsor ##########################################################
 

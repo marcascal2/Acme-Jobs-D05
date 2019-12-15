@@ -2,6 +2,7 @@ employer.application.list.label.reference = Referencia de la aplicación
 employer.application.list.label.moment = Momento
 employer.application.list.label.status = Estado
 employer.application.list.label.skills = Habilidades
+employer.application.list.label.count = Conteo
 
 employer.application.form.label.job = Trabajo:
 employer.application.form.label.reference = Referencia de la aplicación:
@@ -10,5 +11,13 @@ employer.application.form.label.status = Estado:
 employer.application.form.label.statement = Declaración:
 employer.application.form.label.skills = Habilidades:
 employer.application.form.label.qualifications = Calificaciones:
+employer.application.form.label.justification = Justificación:
 
+employer.application.form.button.update = Actualizar;
 employer.application.form.button.return = Volver
+
+employer.application.form.button.groupByReference = Agrupar por número de referencia
+employer.application.form.button.groupByStatus = Agrupar por estado
+employer.application.form.button.groupByMoment = Agrupar por momento
+
+employer.application.form.error.status = Las aplicaciones rechazadas tienen que tener una justificación

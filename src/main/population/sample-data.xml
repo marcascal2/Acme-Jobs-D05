@@ -468,6 +468,7 @@
 		<property name="statement" value="Job application for web development" />
 		<property name="skills" value="PHP and web deployment" />
 		<property name="qualifications" value="Average degree in web programming" />
+		<property name="justification" value=""/>
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job1" />
 	</bean>
@@ -479,6 +480,7 @@
 		<property name="statement" value="Web functionality update" />
 		<property name="skills" value="Web knowledge" />
 		<property name="qualifications" value="Average degree in web programming" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job2" />
 	</bean>
@@ -490,6 +492,7 @@
 		<property name="statement" value="Project management" />
 		<property name="skills" value="Control capacity and group leadership" />
 		<property name="qualifications" value="Informatics Engineering" />
+		<property name="justification" value="Rejected"/>
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job3" />
 	</bean>
@@ -501,6 +504,7 @@
 		<property name="statement" value="R and D project" />
 		<property name="skills" value="Vision and artificial intelligence tasks" />
 		<property name="qualifications" value="Python or Master in artificial vision / artificial intelligence" />
+		<property name="justification"  value=""/>
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job4" />
 	</bean>
@@ -512,6 +516,7 @@
 		<property name="statement" value="Business Analysis" />
 		<property name="skills" value="Business leadership, financial analysis and accounting balances" />
 		<property name="qualifications" value="Business Management Dregree" />
+		<property name="justification"  value=""/>
 		<property name="worker" ref="worker3Worker" />
 		<property name="job" ref="job5" />
 	</bean>
@@ -523,6 +528,7 @@
 		<property name="statement" value="National expansion process of training and networking services" />
 		<property name="skills" value="Strategic alliances, databases and entrepreneurship" />
 		<property name="qualifications" value="Middle Grade Formative Cycle" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker3Worker" />
 		<property name="job" ref="job3" />
 	</bean>
@@ -534,6 +540,7 @@
 		<property name="statement" value="Unitary testing" />
 		<property name="skills" value="Programming and testing knowledge" />
 		<property name="qualifications" value="Certified Software Test Professional" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job7" />
 	</bean>
@@ -545,6 +552,7 @@
 		<property name="statement" value="Valet job" />
 		<property name="skills" value="Dynamic person, with ambition for professional development, driving license and own vehicle." />
 		<property name="qualifications" value="Compulsory Secondary Education" />
+		<property name="justification" value="rejected"/>
 		<property name="worker" ref="worker3Worker" />
 		<property name="job" ref="job5" />
 	</bean>
@@ -556,6 +564,7 @@
 		<property name="statement" value="Job application for web development" />
 		<property name="skills" value="PHP and web deployment" />
 		<property name="qualifications" value="Average degree in web programming" />
+		<property name="justification"  value=""/>
 		<property name="worker" ref="worker3Worker" />
 		<property name="job" ref="job1" />
 	</bean>
@@ -567,6 +576,7 @@
 		<property name="statement" value="Web functionality update" />
 		<property name="skills" value="Web knowledge" />
 		<property name="qualifications" value="Average degree in web programming" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job2" />
 	</bean>
@@ -578,6 +588,7 @@
 		<property name="statement" value="Project management" />
 		<property name="skills" value="Control capacity and group leadership" />
 		<property name="qualifications" value="Informatics Engineering" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker3Worker" />
 		<property name="job" ref="job3" />
 	</bean>
@@ -589,6 +600,7 @@
 		<property name="statement" value="R and D project" />
 		<property name="skills" value="Vision and artificial intelligence tasks" />
 		<property name="qualifications" value="Python or Master in artificial vision / artificial intelligence" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job4" />
 	</bean>
@@ -600,6 +612,7 @@
 		<property name="statement" value="Business Analysis" />
 		<property name="skills" value="Business leadership, financial analysis and accounting balances" />
 		<property name="qualifications" value="Business Management Dregree" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job5" />
 	</bean>
@@ -611,6 +624,7 @@
 		<property name="statement" value="National expansion process of training and networking services" />
 		<property name="skills" value="Strategic alliances, databases and entrepreneurship" />
 		<property name="qualifications" value="Middle Grade Formative Cycle" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job3" />
 	</bean>
@@ -622,6 +636,7 @@
 		<property name="statement" value="Unitary testing" />
 		<property name="skills" value="Programming and testing knowledge" />
 		<property name="qualifications" value="Certified Software Test Professional" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker2Worker" />
 		<property name="job" ref="job7" />
 	</bean>
@@ -633,6 +648,7 @@
 		<property name="statement" value="Valet job" />
 		<property name="skills" value="Dynamic person, with ambition for professional development, driving license and own vehicle." />
 		<property name="qualifications" value="Compulsory Secondary Education" />
+		<property name="justification" value="" />
 		<property name="worker" ref="worker1Worker" />
 		<property name="job" ref="job5" />
 	</bean>

@@ -53,13 +53,14 @@ public class Application extends DomainEntity {
 	@NotBlank
 	private String				qualifications;
 
+	private String				justification;
+
 	//Delivered attributes
 
 	//Relationships
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	private Worker				worker;
 
 	@NotNull

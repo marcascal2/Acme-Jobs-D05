@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.applications.Application;
 import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
@@ -49,12 +50,23 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		request.unbind(entity, model, "salary", "moreInfo", "description", "finalMode");
 
 		Descriptor descriptor = entity.getDescriptor();
-		model.setAttribute("descriptor", descriptor.getTitle());
+		if (descriptor != null) {
+			String descriptorTitle = descriptor.getTitle();
+			model.setAttribute("descriptor", descriptorTitle);
 
-		model.setAttribute("descriptorId", descriptor.getId());
+			model.setAttribute("descriptorId", descriptor.getId());
 
-		Collection<Duty> duties = descriptor.getDuty();
-		model.setAttribute("duties", duties);
+			Collection<Duty> duties = descriptor.getDuty();
+			model.setAttribute("duties", duties);
+			Double sum = 0.;
+			for (Duty duty : duties) {
+				sum = sum + duty.getPercentageTimeForWeek();
+			}
+
+			model.setAttribute("percentage", sum);
+		}
+		Collection<Application> applications = entity.getApplication();
+		model.setAttribute("application", applications);
 
 		int idJob = entity.getId();
 		model.setAttribute("idJob", idJob);
