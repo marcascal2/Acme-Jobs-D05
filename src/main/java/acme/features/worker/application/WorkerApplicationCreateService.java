@@ -29,7 +29,21 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;
 
-		return true;
+		boolean result = true;
+
+		int idWorker = request.getPrincipal().getActiveRoleId();
+		int idJob = request.getModel().getInteger("idJob");
+		Job job = this.respository.findJobById(idJob);
+		Worker w = this.respository.findWorkerById(idWorker);
+
+		for (Application a : job.getApplication()) {
+			if (a.getWorker().equals(w)) {
+				result = false;
+				break;
+			}
+		}
+
+		return result;
 	}
 
 	@Override
