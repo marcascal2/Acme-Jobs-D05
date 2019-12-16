@@ -106,7 +106,7 @@ master.menu.worker.apply-for-jobs = Trabajos disponibles
 
 # master.menu.employer ##########################################################
 
-master.menu.employer = Empleado
+master.menu.employer = Empleador
 master.menu.employer.job = Mis trabajos
 master.menu.employer.application = Mis aplicaciones
 
@@ -121,8 +121,8 @@ master.menu.sponsor.commercial-banner.create = Crear banner comercial
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
-master.menu.user-account.authenticated.employer.form.title.create = Registrar como jefe
-master.menu.user-account.authenticated.employer.form.title.update = Actualizar datos de jefe
+master.menu.user-account.authenticated.employer.form.title.create = Registrar como empleador
+master.menu.user-account.authenticated.employer.form.title.update = Actualizar datos de empleador
 master.menu.user-account.authenticated.worker.form.title.create = Registrar como trabajador
 master.menu.user-account.authenticated.worker.form.title.update = Actualizar datos de trabajador
 master.menu.user-account.authenticated.sponsor.form.title.create = Registrar como patrocinador
