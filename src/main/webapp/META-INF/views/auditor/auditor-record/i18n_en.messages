@@ -1,0 +1,13 @@
+auditor.auditor_record.form.label.title = Title:
+auditor.auditor_record.form.label.status = Status:
+auditor.auditor_record.form.label.creationMoment = Creation date:
+auditor.auditor_record.form.label.body = Body:
+auditor.auditor_record.form.label.job = Job:
+auditor.auditor_record.form.buttom.return = Return
+auditor.auditor_record.form.buttom.create = Create
+auditor.auditor_record.form.buttom.update = Update
+
+
+auditor.auditor_record.list.label.title = Title:
+auditor.auditor_record.list.label.moment = Creation date:
+auditor.auditor_record.list.label.status = Status:

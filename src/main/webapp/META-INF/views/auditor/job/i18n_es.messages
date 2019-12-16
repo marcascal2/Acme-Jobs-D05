@@ -13,3 +13,4 @@ auditor.job.form.label.description = Descripción:
 
 auditor.job.form.button.list-auditor-records = Auditorías
 auditor.job.form.button.return = Volver
+auditor.job.form.buttom.create = Escribe un registro de auditoría

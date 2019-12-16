@@ -61,6 +61,7 @@
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.audited-jobs" action="/auditor/job/list_audited"/>
 			<acme:menu-suboption code="master.menu.auditor.non-audited-jobs" action="/auditor/job/list_non_audited"/>
+			<acme:menu-suboption code="master.menu.auditor.auditor-record.published-audit" action="/auditor/auditor-record/list_published"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">

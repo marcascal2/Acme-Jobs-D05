@@ -16,5 +16,7 @@
 		<acme:form-submit method="get" code="authenticated.job.form.button.duty" action="/authenticated/duty/list?id=${descriptorId}"/>
 	<acme:form-return code="authenticated.job.form.button.return" />
 	
+	<acme:form-submit code="auditor.job.form.buttom.create" action="/auditor/auditor-record/create?job_id=${idJob}"/>
+	
 	<acme:form-submit code="authenticated.job.form.button.list-auditor-records" action="/authenticated/auditor-record/list?job_id=${idJob}" method="get"/>	
 </acme:form>

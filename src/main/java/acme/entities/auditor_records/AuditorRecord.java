@@ -32,7 +32,6 @@ public class AuditorRecord extends DomainEntity {
 	@Pattern(regexp = "(\\bdraft\\b)|(\\bpublished\\b)")
 	private String				status;
 
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 

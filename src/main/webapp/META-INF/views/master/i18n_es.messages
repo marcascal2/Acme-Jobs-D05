@@ -83,6 +83,7 @@ master.menu.administrator.company-record.create = Crear Compañía
 master.menu.auditor = Auditor
 master.menu.auditor.audited-jobs = Trabajos auditados
 master.menu.auditor.non-audited-jobs = Trabajos no auditados
+master.menu.auditor.auditor-record.create = Escribe un registro de auditoría
 
 # master.menu.provider ########################################################
 

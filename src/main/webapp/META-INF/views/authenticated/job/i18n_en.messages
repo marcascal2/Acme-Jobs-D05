@@ -18,3 +18,5 @@ authenticated.job.form.button.duty = Duties
 authenticated.job.form.button.list-auditor-records = Audit records
 
 authenticated.job.form.button.return = Return
+
+authenticated.job.form.buttom.create = Write an Audit Record
