@@ -12,6 +12,7 @@ import acme.framework.components.Request;
 import acme.framework.components.Response;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
+import acme.framework.entities.UserAccount;
 import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractUpdateService;
 
@@ -26,7 +27,16 @@ public class AuthenticatedWorkerUpdateService implements AbstractUpdateService<A
 	public boolean authorise(final Request<Worker> request) {
 		assert request != null;
 
-		return true;
+		boolean result = false;
+
+		int idUA = request.getPrincipal().getAccountId();
+		UserAccount ua = this.repository.findOneUserAccountById(idUA);
+		Worker w = this.repository.findOneWorkerByUserAccountId(idUA);
+		if (ua.getRoles().contains(w)) {
+			result = true;
+		}
+
+		return result;
 	}
 
 	@Override
