@@ -84,5 +84,5 @@ public class Job extends DomainEntity {
 
 	@Valid
 	@OneToMany(mappedBy = "job")
-	private Collection<AuditRecord>	auditorRecords;
+	private Collection<AuditRecord>	auditRecords;
 }
