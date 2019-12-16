@@ -13,4 +13,5 @@ auditor.job.form.label.description = Descripción:
 
 auditor.job.form.button.list-audit-records = Auditorías
 auditor.job.form.button.return = Volver
-auditor.job.form.button.write-audit-record = Escribir auditoría
+auditor.job.form.button.write-audit-record = Escribir registro de auditoría
+auditor.job.form.button.change-audit-record = Modificar registro de auditoría

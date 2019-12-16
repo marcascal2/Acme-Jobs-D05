@@ -3,7 +3,8 @@ auditor.audit_record.form.label.status = Status:
 auditor.audit_record.form.label.creationMoment = Creation date:
 auditor.audit_record.form.label.body = Body:
 auditor.audit_record.form.buttom.return = Return
-auditor.audit_record.form.button.create = Create
+auditor.audit_record.form.button.create = Create	
+auditor.audit_record.form.button.update = Update
 
 auditor.audit_record.list.label.title = Title:
 auditor.audit_record.list.label.moment = Creation date:

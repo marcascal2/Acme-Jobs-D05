@@ -54,7 +54,7 @@ public class AuditorJobListNonAuditedService implements AbstractListService<Audi
 
 		allJobs = this.repository.findManyAll();
 
-		result = allJobs.stream().filter(x -> !auditedJobs.contains(x)).collect(Collectors.toList());
+		result = allJobs.stream().filter(x -> !auditedJobs.contains(x) || auditedJobs.contains(x) && this.repository.findAuditRecordByAuditorAndJobId(principal.getAccountId(), x.getId()).getStatus() == "draft").collect(Collectors.toList());
 
 		return result;
 	}
