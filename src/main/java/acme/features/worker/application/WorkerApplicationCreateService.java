@@ -52,6 +52,9 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert errors != null;
 
+		int workerId = request.getPrincipal().getActiveRoleId();
+		Worker worker = this.respository.findWorkerById(workerId);
+
 		request.bind(entity, errors, "moment");
 	}
 
@@ -60,6 +63,12 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+
+		int workerId = request.getPrincipal().getActiveRoleId();
+		Worker worker = this.respository.findWorkerById(workerId);
+		entity.setQualifications(worker.getQualifications());
+		entity.setSkills(worker.getSkills());
+
 		request.unbind(entity, model, "referenceNumber", "status", "statement", "skills", "qualifications");
 
 		int jobId;
@@ -96,6 +105,10 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		String reference = entity.getReferenceNumber();
+		Application a = this.respository.findOneApplicationByReference(reference);
+
+		errors.state(request, a == null, "referenceNumber", "worker.application.form.error.reference");
 	}
 
 	@Override

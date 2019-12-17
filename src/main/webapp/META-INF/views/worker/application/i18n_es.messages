@@ -12,3 +12,5 @@ worker.application.form.label.qualification = Calificaciones:
 
 worker.application.form.button.create = Completar solicitud
 worker.application.form.button.return = Volver
+
+worker.application.form.error.reference = El número de referencia ya está registrado
