@@ -2,6 +2,7 @@
 package acme.features.employer.application;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,15 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-		request.unbind(entity, model, "referenceNumber", "moment", "status", "skills");
+
+		String jobId;
+
+		request.unbind(entity, model, "referenceNumber", "moment", "status", "skills", "justification");
+		jobId = request.getServletRequest().getParameter("job_id");
+		if (jobId != null) {
+			System.out.println("HEY MAQUINA, ESTOY PONIENDO EL ID");
+			model.setAttribute("jobId", jobId);
+		}
 	}
 
 	@Override
@@ -41,8 +50,39 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 		assert request != null;
 		Collection<Application> result;
 		Principal principal;
-		principal = request.getPrincipal();
-		result = this.repository.findManyByEmployerId(principal.getActiveRoleId());
+		String jobId;
+		String groupByCondition;
+
+		jobId = request.getServletRequest().getParameter("job_id");
+
+		if (jobId == null) {
+			principal = request.getPrincipal();
+			result = this.repository.findManyByEmployerId(principal.getActiveRoleId());
+		} else {
+			groupByCondition = request.getServletRequest().getParameter("group_by");
+			if (!(groupByCondition == null)) {
+				switch (groupByCondition) {
+				case "reference":
+					List<String[]> j = this.repository.groupedByReference(Integer.parseInt(jobId));
+					j.forEach(x -> System.out.println(x.toString()));
+					result = null;
+					break;
+				case "status":
+					result = this.repository.groupedByStatus(Integer.parseInt(jobId));
+					break;
+				case "moment":
+					result = this.repository.groupedByMoment(Integer.parseInt(jobId));
+					break;
+				default:
+					result = this.repository.findManyByJobId(Integer.parseInt(jobId));
+					break;
+				}
+			} else {
+				result = this.repository.findManyByJobId(Integer.parseInt(jobId));
+			}
+
+		}
+
 		return result;
 	}
 

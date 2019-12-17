@@ -12,11 +12,24 @@ employer.job.form.label.deadline = Deadline:
 employer.job.form.label.salary = Salary:
 employer.job.form.label.moreInfo = More info:
 employer.job.form.label.description = Description:
+employer.job.form.label.finalMode = Final mode
 employer.job.form.label.descriptor = Descriptor:
 
 
 employer.job.form.button.duty = Duties
-
+employer.duty.form.button.create = Create duty
+employer.job.form.button.application = Applications
 employer.job.form.button.list-auditor-records = Audit records
 
+employer.job.form.button.update = Update job
+employer.job.form.button.delete = Delete job
+employer.job.form.button.create = Create job
 employer.job.form.button.return = Return
+
+employer.job.form.error.finalMode = Final mode must not be true 
+employer.job.form.error.descriptor = Descriptor must not be null
+employer.job.form.error.application = Cannot delete: worker has applied it
+employer.duty.form.error.percentage = Duties' percentage must be 100 in final mode
+employer.job.form.error.reference = Job with that reference number is already created
+employer.job.form.error.descriptor.title = Descriptor is already created
+employer.job.form.error.spam = Job cannot have spam words

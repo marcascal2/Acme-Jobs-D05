@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
@@ -72,17 +74,14 @@ public class Job extends DomainEntity {
 	@ManyToOne(optional = false)
 	private Employer					employer;
 
-	@NotNull
-	@Valid
-	@OneToOne(mappedBy = "job")
+	@OneToOne(optional = true)
 	private Descriptor					descriptor;
 
-	@NotNull
-	@Valid
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "job")
 	private Collection<Application>		application;
 
-	@Valid
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "job")
 	private Collection<AuditorRecord>	auditorRecords;
 }
