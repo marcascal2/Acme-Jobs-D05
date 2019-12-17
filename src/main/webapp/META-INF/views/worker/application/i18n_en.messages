@@ -12,3 +12,5 @@ worker.application.form.label.qualifications = Qualifications:
 
 worker.application.form.button.create = Submit application
 worker.application.form.button.return = Return
+
+worker.application.form.error.reference = The reference number is already used
