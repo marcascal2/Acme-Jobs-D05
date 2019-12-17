@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.duties.Duty;
+import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -26,7 +28,19 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 	@Override
 	public boolean authorise(final Request<Duty> request) {
 		assert request != null;
-		return true;
+		boolean result;
+		int dutyId;
+		Job job;
+		Duty duty;
+		Employer employer;
+		Principal principal;
+		dutyId = request.getModel().getInteger("id");
+		duty = this.repository.findOneById(dutyId);
+		job = duty.getDescriptor().getJob();
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
+		return result;
 	}
 
 	@Override
@@ -64,19 +78,11 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 
 		Collection<Duty> duties = this.repository.findManyByDescriptorId(entity.getDescriptor().getId());
 		Double sum = 0.0;
-		boolean sum100 = sum == 100;
-		boolean isFinalMode;
-
 		for (Duty duty : duties) {
-			if (duty.getPercentageTimeForWeek() != null) {
+			if (duty.getPercentageTimeForWeek() != null && duty.getId() != entity.getId()) {
 				sum = sum + duty.getPercentageTimeForWeek();
 			}
 		}
-
-		System.out.println(sum + "sum");
-		isFinalMode = entity.getDescriptor().getJob().isFinalMode();
-
-		errors.state(request, !(isFinalMode && !sum100), "percentageTimeForWeek", "employer.duty.form.error.percentage");
 
 		errors.state(request, sum >= 0 && sum <= 100, "percentageTimeForWeek", "employer.duty.form.error.percentageLimit");
 

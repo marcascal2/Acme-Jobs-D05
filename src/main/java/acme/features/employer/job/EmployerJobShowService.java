@@ -58,12 +58,7 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 
 			Collection<Duty> duties = descriptor.getDuty();
 			model.setAttribute("duties", duties);
-			Double sum = 0.;
-			for (Duty duty : duties) {
-				sum = sum + duty.getPercentageTimeForWeek();
-			}
 
-			model.setAttribute("percentage", sum);
 		}
 		Collection<Application> applications = entity.getApplication();
 		model.setAttribute("application", applications);

@@ -13,6 +13,7 @@ import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -27,7 +28,17 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
-		return true;
+		boolean result;
+		int jobId;
+		Job job;
+		Employer employer;
+		Principal principal;
+		jobId = request.getModel().getInteger("id");
+		job = this.repository.findOneById(jobId);
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
+		return result;
 	}
 
 	@Override
@@ -47,6 +58,17 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		assert model != null;
 
 		request.unbind(entity, model, "reference", "status", "title", "deadline", "salary", "description", "moreInfo", "finalMode");
+		Descriptor descriptor = entity.getDescriptor();
+		if (descriptor != null) {
+			String descriptorTitle = descriptor.getTitle();
+			model.setAttribute("descriptor", descriptorTitle);
+
+			model.setAttribute("descriptorId", descriptor.getId());
+
+			Collection<Duty> duties = descriptor.getDuty();
+			model.setAttribute("duties", duties);
+
+		}
 	}
 
 	@Override
@@ -72,39 +94,41 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 
 		Collection<Duty> duties = this.repository.findManyByDescriptorId(entity.getDescriptor().getId());
 		Double sum = 0.0;
-		boolean sum100 = sum == 100;
 
 		for (Duty duty : duties) {
 			if (duty.getPercentageTimeForWeek() != null) {
 				sum = sum + duty.getPercentageTimeForWeek();
+				System.out.println("sum bucle " + sum);
 			}
 		}
-		System.out.println(sum100);
 
-		errors.state(request, !(entity.isFinalMode() && !sum100), "percentageTimeForWeek", "employer.duty.form.error.percentage");
+		errors.state(request, !(entity.isFinalMode() && sum != 100.0), "percentageTimeForWeek", "employer.duty.form.error.percentage");
 	}
 
 	@Override
 	public void update(final Request<Job> request, final Job entity) {
 		assert request != null;
 		assert entity != null;
-
 		Descriptor oldDescriptor = entity.getDescriptor();
-		if (oldDescriptor != null) {
-			oldDescriptor.setJob(null);
-			this.repository.save(oldDescriptor);
-		}
-		String title = request.getModel().getString("descriptor");
-		if (title == "" || title == null) {
-			entity.setDescriptor(null);
+		if (oldDescriptor.getTitle().equals(this.repository.findOneById(entity.getId()).getDescriptor().getTitle())) {
+			this.repository.save(entity);
 		} else {
-			Descriptor newDescriptor = new Descriptor();
-			newDescriptor.setTitle(title);
-			newDescriptor.setJob(entity);
-			this.repository.save(newDescriptor);
+			if (oldDescriptor != null) {
+				oldDescriptor.setJob(null);
+				this.repository.save(oldDescriptor);
+			}
+			String title = request.getModel().getString("descriptor");
+			if (title == "" || title == null) {
+				entity.setDescriptor(null);
+			} else {
+				Descriptor newDescriptor = new Descriptor();
+				newDescriptor.setTitle(title);
+				newDescriptor.setJob(entity);
+				this.repository.save(newDescriptor);
 
-			entity.setDescriptor(newDescriptor);
+				entity.setDescriptor(newDescriptor);
+			}
+			this.repository.save(entity);
 		}
-		this.repository.save(entity);
 	}
 }
