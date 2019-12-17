@@ -19,10 +19,10 @@ public interface AuditorJobRepository extends AbstractRepository {
 	@Query("select j from Job j")
 	Collection<Job> findManyAll();
 
-	@Query("SELECT ar FROM AuditRecord ar WHERE ar.auditor.id = ?1 and ar.status = 'published' ")
+	@Query("SELECT ar FROM AuditRecord ar WHERE ar.auditor.id = ?1 and ar.status = acme.entities.audit_records.AuditRecordStatus.PUBLISHED")
 	Collection<AuditRecord> findAuditedJobs(int auditor_id);
 
-	@Query("SELECT ar FROM AuditRecord ar WHERE ar.auditor.id = ?1 and ar.status = 'draft' and ar.job.id = ?2")
+	@Query("SELECT ar FROM AuditRecord ar WHERE ar.auditor.id = ?1 and ar.status = acme.entities.audit_records.AuditRecordStatus.DRAFT and ar.job.id = ?2")
 	AuditRecord findAuditRecordDraftJob(int auditor_id, int jobId);
 
 	@Query("select ar from AuditRecord ar where ar.auditor.id = ?1 and ar.job.id = ?2")
