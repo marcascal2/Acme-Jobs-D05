@@ -2,7 +2,6 @@
 package acme.features.employer.application;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,10 +38,7 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 
 		request.unbind(entity, model, "referenceNumber", "moment", "status", "skills", "justification");
 		jobId = request.getServletRequest().getParameter("job_id");
-		if (jobId != null) {
-			System.out.println("HEY MAQUINA, ESTOY PONIENDO EL ID");
-			model.setAttribute("jobId", jobId);
-		}
+		model.setAttribute("jobId", jobId);
 	}
 
 	@Override
@@ -51,7 +47,6 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 		Collection<Application> result;
 		Principal principal;
 		String jobId;
-		String groupByCondition;
 
 		jobId = request.getServletRequest().getParameter("job_id");
 
@@ -59,28 +54,7 @@ public class EmployerApplicationListMineService implements AbstractListService<E
 			principal = request.getPrincipal();
 			result = this.repository.findManyByEmployerId(principal.getActiveRoleId());
 		} else {
-			groupByCondition = request.getServletRequest().getParameter("group_by");
-			if (!(groupByCondition == null)) {
-				switch (groupByCondition) {
-				case "reference":
-					List<String[]> j = this.repository.groupedByReference(Integer.parseInt(jobId));
-					j.forEach(x -> System.out.println(x.toString()));
-					result = null;
-					break;
-				case "status":
-					result = this.repository.groupedByStatus(Integer.parseInt(jobId));
-					break;
-				case "moment":
-					result = this.repository.groupedByMoment(Integer.parseInt(jobId));
-					break;
-				default:
-					result = this.repository.findManyByJobId(Integer.parseInt(jobId));
-					break;
-				}
-			} else {
-				result = this.repository.findManyByJobId(Integer.parseInt(jobId));
-			}
-
+			result = this.repository.findManyByJobId(Integer.parseInt(jobId));
 		}
 
 		return result;
