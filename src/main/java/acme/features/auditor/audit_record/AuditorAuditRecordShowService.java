@@ -38,6 +38,12 @@ public class AuditorAuditRecordShowService implements AbstractShowService<Audito
 		assert entity != null;
 		assert model != null;
 
+		UserAccount auditorAR = entity.getAuditor();
+		UserAccount auditorActive = this.repository.findAuditorById(request.getPrincipal().getAccountId());
+
+		boolean isAuditor = auditorAR.equals(auditorActive);
+		model.setAttribute("isAuditor", isAuditor);
+
 		request.unbind(entity, model, "title", "status", "creationMoment", "body");
 	}
 

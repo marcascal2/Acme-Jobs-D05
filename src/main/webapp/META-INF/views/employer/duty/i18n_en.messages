@@ -9,7 +9,7 @@ employer.duty.form.label.percentage = Percentage:
 
 employer.duty.form.button.create = Create duty
 employer.duty.form.button.update = Update duty
-employer.duty.form.button.return=Return
+employer.duty.form.button.return = Return
 
 employer.duty.form.error.percentage = Percentage must be 100 in final mode
 employer.duty.form.error.percentageLimit = Percentage must be between 0 and 100
