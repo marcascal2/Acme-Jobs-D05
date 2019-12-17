@@ -82,23 +82,30 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
+		//CANNOT HAS A NULL DESCRIPTOR IN FINAL MODE
+
 		String descriptor = request.getModel().getString("descriptor");
-		String title = request.getModel().getString("title");
+		boolean hasDescriptor = !descriptor.isEmpty();
+		boolean isFinalMode = request.getModel().getBoolean("isFinalMode");
+
+		errors.state(request, !(isFinalMode && !hasDescriptor), "descriptor", "employer.job.form.error.descriptor");
+
+		//CANNOR REPEAT THE JOB REFERENCE
+
 		String reference = request.getModel().getString("reference");
+		Collection<Job> jobs = this.repository.findManyByEmployerId(request.getPrincipal().getActiveRoleId());
+
+		for (Job job : jobs) {
+			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
+		}
+
+		//CANNOT BE SPAM IN FINAL MODE
+
+		String title = request.getModel().getString("title");
 		String description = request.getModel().getString("description");
 		String moreInfo = request.getModel().getString("moreInfo");
 
 		Collection<SpamWord> spamWords = this.repository.findManyAllSpamWord();
-
-		boolean hasDescriptor = !descriptor.isEmpty();
-		boolean isFinalMode = request.getModel().getBoolean("finalMode");
-
-		errors.state(request, !(isFinalMode && !hasDescriptor), "descriptor", "employer.job.form.error.descriptor");
-
-		Collection<Job> jobs = this.repository.findManyByEmployerId(request.getPrincipal().getActiveRoleId());
-		for (Job job : jobs) {
-			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
-		}
 
 		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
 		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");

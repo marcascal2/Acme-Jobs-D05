@@ -995,7 +995,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Job for the development of a web application" />
 		<property name="moreInfo" value="http://www.myDevelopment.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer1Employer" />
 		<property name="descriptor" ref="descriptor1" />
 		<property name="application">
@@ -1016,7 +1015,6 @@
 		<property name="salary" value="€ 25,500.00" />
 		<property name="description" value="Job for updating a system's functionality" />
 		<property name="moreInfo" value="http://www.funcionalityUpdates.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer1Employer" />
 		<property name="descriptor" ref="descriptor2" />
 		<property name="application">
@@ -1037,7 +1035,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Project management assuming the role of Project Manager" />
 		<property name="moreInfo" value="http://www.yourManagement.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer2Employer" />
 		<property name="descriptor" ref="descriptor3" />
 		<property name="application">
@@ -1059,7 +1056,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Computer programmer for an R and D project." />
 		<property name="moreInfo" value="http://www.RandDProjects.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer2Employer" />
 		<property name="descriptor" ref="descriptor4" />
 		<property name="application">
@@ -1080,7 +1076,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Analyze the organization of the company and the profitability of each one of its areas of activity" />
 		<property name="moreInfo" value="http://www.businessAnalysts.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer1Employer" />
 		<property name="descriptor" ref="descriptor5" />
 		<property name="application">
@@ -1103,7 +1098,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Integrate as delegates to a company in the process of national expansion of training and networking services" />
 		<property name="moreInfo" value="http://www.entrepreneurship.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer2Employer" />
 		<property name="descriptor" ref="descriptor6" />
 		<property name="application">
@@ -1123,7 +1117,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Perform unit tests of a system" />
 		<property name="moreInfo" value="http://www.unitTest.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer2Employer" />
 		<property name="descriptor" ref="descriptor7" />
 		<property name="application">
@@ -1144,7 +1137,6 @@
 		<property name="salary" value="€ 15,000.98" />
 		<property name="description" value="Receipt and distribution of merchandise in warehouse and order preparation" />
 		<property name="moreInfo" value="http://www.merchandiseDistribution.com" />
-		<property name="finalMode" value="true" />
 		<property name="employer" ref="employer1Employer" />
 		<property name="descriptor" ref="descriptor8" />
 		<property name="application">

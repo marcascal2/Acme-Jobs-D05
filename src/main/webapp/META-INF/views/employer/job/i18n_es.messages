@@ -12,13 +12,12 @@ employer.job.form.label.deadline = Fecha de fin:
 employer.job.form.label.salary = Salario:
 employer.job.form.label.moreInfo = Más info:
 employer.job.form.label.description = Descripción:
-employer.job.form.label.finalMode = Modo final:
 employer.job.form.label.descriptor = Descriptor:
 
 
 employer.job.form.button.duty = Deberes
 employer.job.form.button.applications = Aplicaciones
-employer.job.form.button.list-auditor-records = Auditorías
+employer.job.form.button.list-audit-records = Auditorías
 employer.job.duty.form.button.create = Crear deber
 
 employer.job.form.error.finalMode = El modo final no puede ser verdadero

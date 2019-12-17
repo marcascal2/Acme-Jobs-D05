@@ -96,7 +96,6 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 		double new_percentage = entity.getPercentageTimeForWeek();
 
 		sum = sum + new_percentage;
-		System.out.println(sum);
 
 		errors.state(request, !(sum > 100), "percentageTimeForWeek", "employer.duty.form.error.percentageLimit");
 	}
