@@ -1,0 +1,8 @@
+authenticated.audit_record.form.label.title = Título:
+authenticated.audit_record.form.label.status = Estado:
+authenticated.audit_record.form.label.creationMoment = Fecha de creación:
+authenticated.audit_record.form.label.body = Contenido:
+authenticated.audit_record.form.buttom.return = Volver
+
+authenticated.audit_record.list.label.title = Título:
+authenticated.audit_record.list.label.moment = Fecha de creación:

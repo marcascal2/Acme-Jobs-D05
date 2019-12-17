@@ -13,8 +13,8 @@
 	<acme:form-textarea code="authenticated.job.form.label.description" path="description" />
 	<acme:form-textarea readonly="true" code="authenticated.job.form.label.descriptor" path="descriptor" />
 
-		<acme:form-submit method="get" code="authenticated.job.form.button.duty" action="/authenticated/duty/list?id=${descriptorId}"/>
+	<acme:form-submit method="get" code="authenticated.job.form.button.duty" action="/authenticated/duty/list?id=${descriptorId}"/>
 	<acme:form-return code="authenticated.job.form.button.return" />
 	
-	<acme:form-submit code="authenticated.job.form.button.list-auditor-records" action="/authenticated/auditor-record/list?job_id=${idJob}" method="get"/>	
+	<acme:form-submit code="authenticated.job.form.button.list-audit-records" action="/authenticated/audit-record/list?job_id=${idJob}" method="get"/>	
 </acme:form>

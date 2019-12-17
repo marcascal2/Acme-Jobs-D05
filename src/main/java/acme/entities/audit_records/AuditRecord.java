@@ -1,5 +1,5 @@
 
-package acme.entities.auditor_records;
+package acme.entities.audit_records;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import acme.entities.jobs.Job;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class AuditorRecord extends DomainEntity {
+public class AuditRecord extends DomainEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -32,7 +33,7 @@ public class AuditorRecord extends DomainEntity {
 	@Pattern(regexp = "(\\bdraft\\b)|(\\bpublished\\b)")
 	private String				status;
 
-	@NotNull
+	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 

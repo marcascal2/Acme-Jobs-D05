@@ -19,7 +19,6 @@ public class WorkerApplicationShowService implements AbstractShowService<Worker,
 	WorkerApplicationRepository repository;
 
 
-	//AbstractShowService<Provider, Request> interface
 	@Override
 	public boolean authorise(final Request<Application> request) {
 		assert request != null;

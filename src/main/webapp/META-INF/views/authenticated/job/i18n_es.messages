@@ -15,6 +15,6 @@ authenticated.job.form.label.descriptor = Descriptor:
 
 authenticated.job.form.button.duty = Duties
 
-authenticated.job.form.button.list-auditor-records = Auditorías
+authenticated.job.form.button.list-audit-records = Auditorías
 
 authenticated.job.form.button.return = Volver

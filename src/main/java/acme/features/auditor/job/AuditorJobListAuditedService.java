@@ -7,16 +7,16 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.auditor_records.AuditorRecord;
+import acme.entities.audit_records.AuditRecord;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Auditor;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuditorJobListAuditedService implements AbstractListService<Authenticated, Job> {
+public class AuditorJobListAuditedService implements AbstractListService<Auditor, Job> {
 
 	@Autowired
 	AuditorJobRepository repository;
@@ -42,13 +42,13 @@ public class AuditorJobListAuditedService implements AbstractListService<Authent
 	public Collection<Job> findMany(final Request<Job> request) {
 		assert request != null;
 
-		Collection<AuditorRecord> auditorRecords;
+		Collection<AuditRecord> auditRecords;
 		Collection<Job> result;
 		Principal principal;
 		principal = request.getPrincipal();
 
-		auditorRecords = this.repository.findAuditedJobs(principal.getAccountId());
-		result = auditorRecords.stream().map(x -> x.getJob()).collect(Collectors.toList());
+		auditRecords = this.repository.findAuditedJobs(principal.getAccountId());
+		result = auditRecords.stream().map(x -> x.getJob()).collect(Collectors.toList());
 
 		return result;
 	}

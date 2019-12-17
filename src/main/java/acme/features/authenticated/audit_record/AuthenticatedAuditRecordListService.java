@@ -1,33 +1,33 @@
 
-package acme.features.authenticated.auditor_record;
+package acme.features.authenticated.audit_record;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.auditor_records.AuditorRecord;
+import acme.entities.audit_records.AuditRecord;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedAuditorRecordListService implements AbstractListService<Authenticated, AuditorRecord> {
+public class AuthenticatedAuditRecordListService implements AbstractListService<Authenticated, AuditRecord> {
 
 	@Autowired
-	AuthenticatedAuditorRecordRepository repository;
+	AuthenticatedAuditRecordRepository repository;
 
 
 	@Override
-	public boolean authorise(final Request<AuditorRecord> request) {
+	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public void unbind(final Request<AuditorRecord> request, final AuditorRecord entity, final Model model) {
+	public void unbind(final Request<AuditRecord> request, final AuditRecord entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -36,10 +36,10 @@ public class AuthenticatedAuditorRecordListService implements AbstractListServic
 	}
 
 	@Override
-	public Collection<AuditorRecord> findMany(final Request<AuditorRecord> request) {
+	public Collection<AuditRecord> findMany(final Request<AuditRecord> request) {
 		assert request != null;
 
-		Collection<AuditorRecord> result;
+		Collection<AuditRecord> result;
 		int jobId = request.getModel().getInteger("job_id");
 
 		result = this.repository.findManyByJobId(jobId);
