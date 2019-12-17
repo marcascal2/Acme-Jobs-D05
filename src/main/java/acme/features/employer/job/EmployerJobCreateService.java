@@ -36,7 +36,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		Job job;
 		Employer employer;
 		Principal principal;
-		jobId = request.getModel().getInteger("id");
+		jobId = request.getModel().getInteger("jobId");
 		job = this.repository.findOneById(jobId);
 		employer = job.getEmployer();
 		principal = request.getPrincipal();
