@@ -22,7 +22,7 @@
 	<jstl:if test="${not empty descriptor}">
 		<acme:form-submit method="get" code="employer.job.form.button.duty" action="/employer/duty/list?descriptor_id=${descriptorId }"/>
 		<jstl:if test="${not finalMode}">
-			<acme:form-submit method="get" code="employer.duty.form.button.create" action="/employer/duty/create?descriptor_id=${descriptorId }"/>
+			<acme:form-submit method="get" code="employer.duty.form.button.create" action="/employer/duty/create?descriptor_id=${descriptorId}"/>
 		</jstl:if>
 	</jstl:if>
 		<acme:form-submit method="get" code="employer.job.form.button.application" action="/employer/application/list_mine?job_id=${idJob}"/>

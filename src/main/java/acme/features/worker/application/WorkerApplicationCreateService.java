@@ -22,7 +22,7 @@ import acme.framework.services.AbstractCreateService;
 public class WorkerApplicationCreateService implements AbstractCreateService<Worker, Application> {
 
 	@Autowired
-	private WorkerApplicationRepository respository;
+	private WorkerApplicationRepository repository;
 
 
 	@Override
@@ -33,8 +33,8 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 
 		int idWorker = request.getPrincipal().getActiveRoleId();
 		int idJob = request.getModel().getInteger("idJob");
-		Job job = this.respository.findJobById(idJob);
-		Worker w = this.respository.findWorkerById(idWorker);
+		Job job = this.repository.findJobById(idJob);
+		Worker w = this.repository.findWorkerById(idWorker);
 
 		for (Application a : job.getApplication()) {
 			if (a.getWorker().equals(w)) {
@@ -53,7 +53,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert errors != null;
 
 		int workerId = request.getPrincipal().getActiveRoleId();
-		Worker worker = this.respository.findWorkerById(workerId);
+		Worker worker = this.repository.findWorkerById(workerId);
 
 		request.bind(entity, errors, "moment");
 	}
@@ -65,7 +65,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert model != null;
 
 		int workerId = request.getPrincipal().getActiveRoleId();
-		Worker worker = this.respository.findWorkerById(workerId);
+		Worker worker = this.repository.findWorkerById(workerId);
 		entity.setQualifications(worker.getQualifications());
 		entity.setSkills(worker.getSkills());
 
@@ -87,10 +87,10 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		Worker worker;
 
 		jobId = request.getModel().getInteger("idJob");
-		job = this.respository.findJobById(jobId);
+		job = this.repository.findJobById(jobId);
 
 		workerId = request.getPrincipal().getActiveRoleId();
-		worker = this.respository.findWorkerById(workerId);
+		worker = this.repository.findWorkerById(workerId);
 
 		result = new Application();
 		result.setJob(job);
@@ -106,7 +106,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		assert entity != null;
 		assert errors != null;
 		String reference = entity.getReferenceNumber();
-		Application a = this.respository.findOneApplicationByReference(reference);
+		Application a = this.repository.findOneApplicationByReference(reference);
 
 		errors.state(request, a == null, "referenceNumber", "worker.application.form.error.reference");
 	}
@@ -121,7 +121,7 @@ public class WorkerApplicationCreateService implements AbstractCreateService<Wor
 		moment = new Date(System.currentTimeMillis() - 1);
 		entity.setMoment(moment);
 
-		this.respository.save(entity);
+		this.repository.save(entity);
 	}
 
 	@Override

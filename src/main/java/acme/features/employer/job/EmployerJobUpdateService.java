@@ -61,7 +61,7 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "reference", "status", "title", "deadline", "salary", "description", "moreInfo", "finalMode");
+		request.unbind(entity, model, "reference", "status", "title", "deadline", "salary", "description", "moreInfo");
 		Descriptor descriptor = entity.getDescriptor();
 		if (descriptor != null) {
 			String descriptorTitle = descriptor.getTitle();
