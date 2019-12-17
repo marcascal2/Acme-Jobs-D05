@@ -6,13 +6,12 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
-import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractUpdateService;
 
 @Service
@@ -28,18 +27,16 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 	@Override
 	public boolean authorise(final Request<Duty> request) {
 		assert request != null;
-		boolean result;
-		int dutyId;
-		Job job;
-		Duty duty;
-		Employer employer;
-		Principal principal;
-		dutyId = request.getModel().getInteger("id");
-		duty = this.repository.findOneById(dutyId);
-		job = duty.getDescriptor().getJob();
-		employer = job.getEmployer();
-		principal = request.getPrincipal();
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
+		boolean result = false;
+
+		int idEmployer = request.getPrincipal().getActiveRoleId();
+		int idDescriptor = request.getModel().getInteger("descriptor_id");
+
+		Descriptor descriptor = this.repository.findDescriptorById(idDescriptor);
+		Employer employer = this.repository.findEmployerById(idEmployer);
+
+		result = descriptor.getJob().getEmployer().equals(employer);
+
 		return result;
 	}
 

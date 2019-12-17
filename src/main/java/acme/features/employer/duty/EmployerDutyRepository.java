@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
+import acme.entities.roles.Employer;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -21,4 +22,7 @@ public interface EmployerDutyRepository extends AbstractRepository {
 
 	@Query("select d from Descriptor d where d.id = ?1")
 	Descriptor findDescriptorById(int descriptorId);
+
+	@Query("select e from Employer e where e.id = ?1")
+	Employer findEmployerById(int employerId);
 }

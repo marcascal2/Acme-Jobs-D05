@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
-import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractCreateService;
 
 @Service
@@ -29,15 +27,15 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 	@Override
 	public boolean authorise(final Request<Duty> request) {
 		assert request != null;
-		boolean result;
-		Job job;
-		Employer employer;
-		Principal principal;
-		job = this.repository.findDescriptorById(Integer.parseInt(request.getServletRequest().getParameter("descriptor_id"))).getJob();
-		employer = job.getEmployer();
-		principal = request.getPrincipal();
+		boolean result = false;
 
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
+		int idEmployer = request.getPrincipal().getActiveRoleId();
+		int idDescriptor = request.getModel().getInteger("descriptor_id");
+
+		Descriptor descriptor = this.repository.findDescriptorById(idDescriptor);
+		Employer employer = this.repository.findEmployerById(idEmployer);
+
+		result = descriptor.getJob().getEmployer().equals(employer);
 
 		return result;
 	}
