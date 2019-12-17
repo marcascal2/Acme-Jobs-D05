@@ -2,7 +2,6 @@
 package acme.features.employer.application;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -22,13 +21,13 @@ public interface EmployerApplicationRepository extends AbstractRepository {
 	@Query("select a from Application a where a.job.id = ?1")
 	Collection<Application> findManyByJobId(int jobId);
 
-	@Query("select a.referenceNumber, count(a) from Application a where a.job.id= ?1 group by a.referenceNumber")
-	List<String[]> groupedByReference(int jobId);
-
-	@Query("select a.status, count(a) from Application a where a.job.id= ?1 group by a.status")
-	Collection<Application> groupedByStatus(int jobId);
-
-	@Query("select a.moment, count(a) from Application a where a.job.id= ?1 group by a.moment")
-	Collection<Application> groupedByMoment(int jobId);
+	//	@Query("select a from Application a where a.job.id= ?1 group by a.referenceNumber")
+	//	List<String[]> groupedByReference(int jobId);
+	//
+	//	@Query("select a from Application a where a.job.id= ?1")
+	//	Collection<Application> groupedByStatus(int jobId);
+	//
+	//	@Query("select a.moment, count(a) from Application a where a.job.id= ?1 group by a.moment")
+	//	Collection<Application> groupedByMoment(int jobId);
 
 }

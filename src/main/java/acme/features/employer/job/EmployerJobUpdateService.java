@@ -1,7 +1,10 @@
 
 package acme.features.employer.job;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +13,7 @@ import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
+import acme.entities.spam_words.SpamWord;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -103,6 +107,21 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		}
 
 		errors.state(request, !(entity.isFinalMode() && sum != 100.0), "percentageTimeForWeek", "employer.duty.form.error.percentage");
+
+		String descriptor = entity.getDescriptor().getTitle();
+		String title = entity.getTitle();
+		String reference = entity.getReference();
+		String description = entity.getDescription();
+		String moreInfo = entity.getMoreInfo();
+		Collection<SpamWord> spamWords;
+
+		spamWords = this.repository.findManyAllSpamWord();
+
+		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
 	}
 
 	@Override
@@ -130,5 +149,23 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 			}
 			this.repository.save(entity);
 		}
+
+	}
+
+	private boolean is_spam(final String text, final Collection<SpamWord> spamWords) {
+		List<String> list = Arrays.asList(text.split(" "));
+
+		for (SpamWord spamWord : spamWords) {
+			double spanishFrequency = (double) Collections.frequency(list, spamWord.getSpanishTranslation()) / list.size() * 100;
+			if (spanishFrequency > spamWord.getSpamThreshold()) {
+				return true;
+			}
+			double englishFrequency = (double) Collections.frequency(list, spamWord.getEnglishTranslation()) / list.size() * 100;
+			if (englishFrequency > spamWord.getSpamThreshold()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

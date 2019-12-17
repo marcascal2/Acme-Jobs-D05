@@ -174,43 +174,43 @@
 	<bean id="spamWord01" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="sexo" />
 		<property name="englishTranslation" value="sex" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="50.0" />
 	</bean>
 
 	<bean id="spamWord02" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="hard core" />
 		<property name="englishTranslation" value="hard core" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="15.0" />
 	</bean>
 
 	<bean id="spamWord03" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="viagra" />
 		<property name="englishTranslation" value="viagra" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="30.0" />
 	</bean>
 
 	<bean id="spamWord04" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="cialis" />
 		<property name="englishTranslation" value="cialis" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="70.0" />
 	</bean>
 
 	<bean id="spamWord05" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="nigeria" />
 		<property name="englishTranslation" value="nigeria" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="90.0" />
 	</bean>
 
 	<bean id="spamWord06" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="has ganado" />
 		<property name="englishTranslation" value="you´ve won" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="10.0" />
 	</bean>
 
 	<bean id="spamWord07" class="acme.entities.spam_words.SpamWord">
 		<property name="spanishTranslation" value="millón de dólares" />
 		<property name="englishTranslation" value="million dollar" />
-		<property name="spamThreshold" value="1.0" />
+		<property name="spamThreshold" value="80.0" />
 	</bean>
 
 

@@ -17,7 +17,6 @@
 	<acme:form-textbox code="employer.job.form.label.descriptor" path="descriptor" />
 	<acme:form-errors path="application" />
 	<acme:form-errors path="percentageTimeForWeek" />
-	<acme:form-errors path="spamWord" />
 	
 	<jstl:if test="${command != 'create'}">
 	<jstl:if test="${not empty descriptor}">

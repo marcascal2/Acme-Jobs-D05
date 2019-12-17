@@ -100,12 +100,32 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
 		}
 
-		errors.state(request, this.is_spam(reference, spamWords), "spamWord", "employer.job.form.error.spam");
-		errors.state(request, this.is_spam(title, spamWords), "spamWord", "employer.job.form.error.spam");
-		errors.state(request, this.is_spam(description, spamWords), "spamWord", "employer.job.form.error.spam");
-		errors.state(request, this.is_spam(moreInfo, spamWords), "spamWord", "employer.job.form.error.spam");
-		errors.state(request, this.is_spam(descriptor, spamWords), "spamWord", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
 
+	}
+
+	@Override
+	public void create(final Request<Job> request, final Job entity) {
+		assert request != null;
+		assert entity != null;
+
+		String title = request.getModel().getString("descriptor");
+		if (title == "" || title == null) {
+			entity.setDescriptor(null);
+		} else {
+			Descriptor newDescriptor = new Descriptor();
+			newDescriptor.setTitle(title);
+			newDescriptor.setJob(entity);
+			this.repository.save(newDescriptor);
+
+			entity.setDescriptor(newDescriptor);
+		}
+
+		this.repository.save(entity);
 	}
 
 	private boolean is_spam(final String text, final Collection<SpamWord> spamWords) {
@@ -125,22 +145,4 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		return false;
 	}
 
-	@Override
-	public void create(final Request<Job> request, final Job entity) {
-		assert request != null;
-		assert entity != null;
-
-		String title = request.getModel().getString("descriptor");
-		if (title == "" || title == null) {
-			entity.setDescriptor(null);
-		} else {
-			Descriptor newDescriptor = new Descriptor();
-			newDescriptor.setTitle(title);
-			newDescriptor.setJob(entity);
-			this.repository.save(newDescriptor);
-
-			entity.setDescriptor(newDescriptor);
-		}
-		this.repository.save(entity);
-	}
 }
