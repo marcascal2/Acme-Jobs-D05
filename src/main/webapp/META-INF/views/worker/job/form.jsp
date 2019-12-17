@@ -11,7 +11,7 @@
 	<acme:form-money code="worker.job.form.label.salary" path="salary" />
 	<acme:form-url code="worker.job.form.label.moreInfo" path="moreInfo" />
 	<acme:form-textarea code="worker.job.form.label.description" path="description" />
-	<acme:form-textarea readonly="true" code="worker.job.form.label.descriptor" path="descriptor" />
+	<acme:form-textarea code="worker.job.form.label.descriptor" path="descriptor" readonly="true"/>
 
 	<acme:form-submit method="get" code="worker.job.form.button.duty" action="/authenticated/duty/list?id=${descriptorId}"/>	
 	<acme:form-submit method="get" code="worker.job.form.button.list-auditor-records" action="/authenticated/audit-record/list?job_id=${idJob}"/>

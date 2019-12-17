@@ -12,7 +12,7 @@ employer.job.form.label.deadline = Fecha de fin:
 employer.job.form.label.salary = Salario:
 employer.job.form.label.moreInfo = Más info:
 employer.job.form.label.description = Descripción:
-employer.job.form.label.finalMode = Modo final:
+employer.job.form.label.finalMode = Modo final
 employer.job.form.label.descriptor = Descriptor:
 
 

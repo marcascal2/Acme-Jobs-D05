@@ -8,7 +8,7 @@
 		<acme:form-moment code="auditor.audit_record.form.label.creationMoment" path="creationMoment" readonly="true"/>
 	</jstl:if>
 
-	<acme:form-textbox code="auditor.audit_record.form.label.status" path="status"/>
+	<acme:form-textbox code="auditor.audit_record.form.label.status" path="status" placeholder="DRAFT / PUBLISHED"/>
 	<acme:form-textbox code="auditor.audit_record.form.label.title" path="title"/>
 	<acme:form-textarea code="auditor.audit_record.form.label.body" path="body"/>
 	
