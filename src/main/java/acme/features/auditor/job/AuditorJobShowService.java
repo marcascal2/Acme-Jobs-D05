@@ -41,6 +41,7 @@ public class AuditorJobShowService implements AbstractShowService<Auditor, Job> 
 
 		AuditRecord d = this.repository.findAuditRecordDraftJob(idAuditor, idJob);
 		boolean isDraftMode = d == null ? false : true;
+
 		model.setAttribute("isDraftMode", isDraftMode);
 		model.setAttribute("isAudited", isAudited);
 

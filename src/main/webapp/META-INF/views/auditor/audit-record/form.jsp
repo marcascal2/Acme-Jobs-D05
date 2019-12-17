@@ -14,8 +14,10 @@
 	
 	<acme:form-hidden path="idJob"/>
 	
-	<acme:form-submit test="${ command == 'show'}" code="auditor.audit_record.form.button.update" action="/auditor/audit-record/update"/>
 	<acme:form-submit test="${ command == 'create'}" code="auditor.audit_record.form.button.create" action="/auditor/audit-record/create"/>
+	<jstl:if test="${isAuditor}">
+	<acme:form-submit test="${ command == 'show'}" code="auditor.audit_record.form.button.update" action="/auditor/audit-record/update"/>
 	<acme:form-submit test="${ command == 'update'}" code="auditor.audit_record.form.button.update" action="/auditor/audit-record/update"/>
+	</jstl:if>
 	<acme:form-return code="auditor.audit_record.form.buttom.return"/>
 </acme:form>
