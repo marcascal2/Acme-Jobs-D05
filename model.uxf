@@ -565,7 +565,7 @@ registered by ^</panel_attributes>
     <coordinates>
       <x>987</x>
       <y>343</y>
-      <w>147</w>
+      <w>154</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -609,7 +609,7 @@ descripted by v</panel_attributes>
       <x>931</x>
       <y>539</y>
       <w>287</w>
-      <h>98</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Application
 --
@@ -618,8 +618,7 @@ descripted by v</panel_attributes>
 + status: ApplicationStatus{NotNull}
 + statement: String
 + skills: String {NotBlank}
-+ qualifications: String {NotBlank}
-+ justifications: String {NotBlank}</panel_attributes>
++ qualifications: String {NotBlank}</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -632,7 +631,7 @@ descripted by v</panel_attributes>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..1
-m2=0..*
+m2=0..1
 applied by &gt;</panel_attributes>
     <additional_attributes>10.0;10.0;340.0;80.0</additional_attributes>
   </element>
@@ -693,7 +692,7 @@ audited by  &gt;</panel_attributes>
     <coordinates>
       <x>819</x>
       <y>343</y>
-      <w>84</w>
+      <w>91</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>lt=-
@@ -734,8 +733,8 @@ formed by v</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1050</x>
-      <y>14</y>
+      <x>1148</x>
+      <y>0</y>
       <w>287</w>
       <h>49</h>
     </coordinates>
@@ -750,21 +749,19 @@ formed by v</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>728</x>
-      <y>7</y>
-      <w>336</w>
-      <h>42</h>
+      <y>14</y>
+      <w>147</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0..*
-m2=0..*
-participants of  &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;460.0;30.0</additional_attributes>
+m1=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1099</x>
-      <y>161</y>
+      <x>1197</x>
+      <y>168</y>
       <w>287</w>
       <h>77</h>
     </coordinates>
@@ -780,16 +777,16 @@ participants of  &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1253</x>
-      <y>56</y>
-      <w>70</w>
-      <h>119</h>
+      <x>1351</x>
+      <y>42</y>
+      <w>77</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..1
 m2=0..*
 contains  &gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -801,5 +798,31 @@ contains  &gt;</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;700.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>861</x>
+      <y>14</y>
+      <w>175</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>MessageThreadUserAccount
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>14</y>
+      <w>133</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
   </element>
 </diagram>

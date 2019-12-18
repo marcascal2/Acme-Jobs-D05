@@ -1457,26 +1457,72 @@
 	<bean name="messageThread2" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Prices"/>
 		<property name="moment" value="2018/12/11 23:59"/>
+		<property name="messageThreadsOfUserAccount">
+			<list>
+				<ref bean="messageThreadUserAccount2"/>
+				<ref bean="messageThreadUserAccount3"/>
+				<ref bean="messageThreadUserAccount4"/>
+				<ref bean="messageThreadUserAccount5"/>				
+			</list>
+		</property>
 	</bean>
 	
 	<bean name="messageThread3" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Jobs"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-	</bean>
-	
-	<bean name="messageThread4" class="acme.entities.message_threads.MessageThread">
-		<property name="title" value="Searches"/>
-		<property name="moment" value="2018/12/11 23:59"/>
-	</bean>
-	
-	<bean name="messageThread5" class="acme.entities.message_threads.MessageThread">
-		<property name="title" value="Problems"/>
-		<property name="moment" value="2018/12/11 23:59"/>
+		<property name="messageThreadsOfUserAccount">
+			<list>
+				<ref bean="messageThreadUserAccount6"/>
+				<ref bean="messageThreadUserAccount7"/>
+				<ref bean="messageThreadUserAccount8"/>
+				<ref bean="messageThreadUserAccount9"/>				
+			</list>
+		</property>
 	</bean>
 	
 	<bean name="messageThreadUserAccount1" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
 		<property name="messageThread" ref="messageThread1"/>
 		<property name="userAccount" ref="auditor1UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount2" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread2"/>
+		<property name="userAccount" ref="sponsor3UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount3" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread2"/>
+		<property name="userAccount" ref="sponsor2UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount4" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread2"/>
+		<property name="userAccount" ref="sponsor1UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount5" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread2"/>
+		<property name="userAccount" ref="employer1UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount6" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread3"/>
+		<property name="userAccount" ref="employer1UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount7" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread3"/>
+		<property name="userAccount" ref="sponsor2UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount8" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread3"/>
+		<property name="userAccount" ref="worker2UserAccount"/>
+	</bean>
+	
+	<bean name="messageThreadUserAccount9" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread3"/>
+		<property name="userAccount" ref="worker1UserAccount"/>
 	</bean>
 	
 	
@@ -1551,7 +1597,7 @@
 		<property name="moment" value="2018/12/11 23:59"/>
 		<property name="tags" value="Searches"/>
 		<property name="body" value="Search for offers made successfully"/>
-		<property name="messageThread" ref="messageThread4"/>
+		<property name="messageThread" ref="messageThread1"/>
 	</bean>
 	
 	<bean name="message10" class="acme.entities.messages.Message">
@@ -1559,7 +1605,7 @@
 		<property name="moment" value="2018/12/11 23:59"/>
 		<property name="tags" value="Searches"/>
 		<property name="body" value="Job search failed"/>
-		<property name="messageThread" ref="messageThread4"/>
+		<property name="messageThread" ref="messageThread1"/>
 	</bean>
 	
 	<bean name="message11" class="acme.entities.messages.Message">
@@ -1567,7 +1613,7 @@
 		<property name="moment" value="2017/05/14 10:59"/>
 		<property name="tags" value="Discussion, Problems"/>
 		<property name="body" value="Problem finding investors"/>
-		<property name="messageThread" ref="messageThread5"/>
+		<property name="messageThread" ref="messageThread1"/>
 	</bean>
 	
 	<bean name="message12" class="acme.entities.messages.Message">
@@ -1575,7 +1621,7 @@
 		<property name="moment" value="2018/05/17 22:54"/>
 		<property name="tags" value="Discussion, Problems"/>
 		<property name="body" value="Problem when choosing ads"/>
-		<property name="messageThread" ref="messageThread5"/>
+		<property name="messageThread" ref="messageThread2"/>
 	</bean>
 	
 	<bean name="message13" class="acme.entities.messages.Message">
@@ -1607,7 +1653,7 @@
 		<property name="moment" value="2018/02/20 15:22"/>
 		<property name="tags" value="Searches"/>
 		<property name="body" value="Search for new investors not found"/>
-		<property name="messageThread" ref="messageThread4"/>
+		<property name="messageThread" ref="messageThread2"/>
 	</bean>
 	
 	<!-- Audit Records ****************** -->
