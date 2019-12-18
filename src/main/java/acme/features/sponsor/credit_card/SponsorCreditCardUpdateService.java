@@ -28,8 +28,9 @@ public class SponsorCreditCardUpdateService implements AbstractUpdateService<Spo
 		assert request != null;
 
 		int sponsorId = request.getPrincipal().getActiveRoleId();
-		int sId = request.getModel().getInteger("sponsorId");
-		boolean result = sponsorId == sId;
+		CreditCard sponsorCreditCard = this.repository.findOneBySponsorId(sponsorId);
+
+		boolean result = sponsorCreditCard != null;
 
 		return result;
 	}

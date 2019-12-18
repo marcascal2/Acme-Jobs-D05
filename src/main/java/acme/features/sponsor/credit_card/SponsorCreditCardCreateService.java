@@ -30,10 +30,10 @@ public class SponsorCreditCardCreateService implements AbstractCreateService<Spo
 	@Override
 	public boolean authorise(final Request<CreditCard> request) {
 		assert request != null;
-
 		int sponsorId = request.getPrincipal().getActiveRoleId();
-		int sId = request.getModel().getInteger("sponsorId");
-		boolean result = sponsorId == sId;
+		CreditCard sponsorCreditCard = this.repository.findOneBySponsorId(sponsorId);
+
+		boolean result = sponsorCreditCard == null;
 
 		return result;
 	}
@@ -84,17 +84,16 @@ public class SponsorCreditCardCreateService implements AbstractCreateService<Spo
 
 		int uaId = request.getPrincipal().getAccountId();
 		Sponsor sp = this.repository.findOneSponsorByUserAccountId(uaId);
-		CreditCard c = sp.getCreditCard();
 
 		String newMonth = entity.getMonth();
 		String newYear = entity.getYear();
-		LocalDate newDate = LocalDate.of(Integer.parseInt(newYear), Integer.parseInt(newMonth), 1);
-		LocalDate actualDate = LocalDate.now();
-		LocalDate limitDate = actualDate.withDayOfMonth(1);
-
-		if (c != null) {
+		if (newMonth != "" && newMonth != null && newYear != "" && newYear != null) {
+			LocalDate newDate = LocalDate.of(Integer.parseInt(newYear), Integer.parseInt(newMonth), 1);
+			LocalDate actualDate = LocalDate.now();
+			LocalDate limitDate = actualDate.withDayOfMonth(1);
 			boolean expiredCard = limitDate.isBefore(newDate);
-			errors.state(request, expiredCard, "expiredCard", "sponsor.credit-card.form.errors.expiredCard");
+			System.out.println(expiredCard);
+			errors.state(request, expiredCard, "year", "sponsor.credit-card.form.errors.expiredCard");
 		}
 
 	}
