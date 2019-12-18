@@ -12,18 +12,17 @@ employer.job.form.label.deadline = Fecha de fin:
 employer.job.form.label.salary = Salario:
 employer.job.form.label.moreInfo = Más info:
 employer.job.form.label.description = Descripción:
-employer.job.form.label.finalMode = Modo final
 employer.job.form.label.descriptor = Descriptor:
 
-
 employer.job.form.button.duty = Deberes
-employer.job.form.button.applications = Aplicaciones
-employer.job.form.button.list-auditor-records = Auditorías
+employer.job.form.button.application = Aplicaciones
+employer.job.form.button.list-audit-records = Auditorías
 employer.job.duty.form.button.create = Crear deber
 
 employer.job.form.error.finalMode = El modo final no puede ser verdadero
 employer.job.form.error.descriptor = El descriptor no puede ser nulo
 employer.job.form.error.application = No se puede borrar: está aplicado a un trabajador
+employer.duty.form.error.percentage = El porcentaje total de las tareas debe ser 100 en modo final
 employer.job.form.error.reference = El trabajo con ese número de referencia ya está creado
 employer.job.form.error.ref = El trabajo con ese número de referencia ya está creado por otro empleador
 employer.job.form.error.descriptor.title = El descriptor está ya creado
@@ -33,3 +32,5 @@ employer.job.form.button.return = Volver
 employer.job.form.button.create = Crear
 employer.job.form.button.update = Actualizar
 employer.job.form.button.delete = Borrar
+
+employer.job.form.error.spam = Un trabajo no puede contener palabras spam en modo final

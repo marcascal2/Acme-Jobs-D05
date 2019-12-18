@@ -1,7 +1,10 @@
 
 package acme.features.employer.job;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.descriptors.Descriptor;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
+import acme.entities.spam_words.SpamWord;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -81,6 +85,10 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		String[] newJob = newReference.split("-");
 		String newRefJob = newJob[1].trim();
 
+		//CANNOT HAS A NULL DESCRIPTOR IN FINAL MODE
+
+		String descriptor = request.getModel().getString("descriptor");
+
 		Collection<Job> totalJobs = this.repository.findAllJobs();
 		for (Job job : totalJobs) {
 			String oldReference = job.getReference();
@@ -90,6 +98,30 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 			errors.state(request, !oldRefJob.equals(newRefJob), "reference", "employer.job.form.error.ref");
 			errors.state(request, !oldReference.equals(newReference), "reference", "employer.job.form.error.reference");
 		}
+
+		//CANNOR REPEAT THE JOB REFERENCE
+
+		String reference = request.getModel().getString("reference");
+		Collection<Job> jobs = this.repository.findManyByEmployerId(request.getPrincipal().getActiveRoleId());
+
+		for (Job job : jobs) {
+			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
+		}
+
+		//CANNOT BE SPAM IN FINAL MODE
+
+		String title = request.getModel().getString("title");
+		String description = request.getModel().getString("description");
+		String moreInfo = request.getModel().getString("moreInfo");
+
+		Collection<SpamWord> spamWords = this.repository.findManyAllSpamWord();
+
+		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
+		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
+
 	}
 
 	@Override
@@ -110,6 +142,23 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		}
 
 		this.repository.save(entity);
+	}
+
+	private boolean is_spam(final String text, final Collection<SpamWord> spamWords) {
+		List<String> list = Arrays.asList(text.split(" "));
+
+		for (SpamWord spamWord : spamWords) {
+			double spanishFrequency = (double) Collections.frequency(list, spamWord.getSpanishTranslation()) / list.size() * 100;
+			if (spanishFrequency > spamWord.getSpamThreshold()) {
+				return true;
+			}
+			double englishFrequency = (double) Collections.frequency(list, spamWord.getEnglishTranslation()) / list.size() * 100;
+			if (englishFrequency > spamWord.getSpamThreshold()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

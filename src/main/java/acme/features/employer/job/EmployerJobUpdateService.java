@@ -91,65 +91,86 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
+		String descriptor = request.getModel().getString("descriptor");
+		boolean hasDescriptor = !descriptor.isEmpty();
+		boolean isFinalMode = entity.isFinalMode();
+
+		errors.state(request, !(isFinalMode && !hasDescriptor), "descriptor", "employer.job.form.error.descriptor");
+
 		Job job;
 		job = this.repository.findOneById(entity.getId());
 
 		errors.state(request, !job.isFinalMode() || !entity.isFinalMode(), "finalMode", "employer.job.form.error.finalMode");
 
-		Collection<Duty> duties = this.repository.findManyByDescriptorId(entity.getDescriptor().getId());
-		Double sum = 0.0;
+		if (entity.getDescriptor() != null) {
+			Collection<Duty> duties = this.repository.findManyByDescriptorId(entity.getDescriptor().getId());
+			Double sum = 0.0;
 
-		for (Duty duty : duties) {
-			if (duty.getPercentageTimeForWeek() != null) {
-				sum = sum + duty.getPercentageTimeForWeek();
-				System.out.println("sum bucle " + sum);
+			for (Duty duty : duties) {
+				if (duty.getPercentageTimeForWeek() != null) {
+					sum = sum + duty.getPercentageTimeForWeek();
+				}
 			}
+
+			errors.state(request, !(entity.isFinalMode() && sum != 100.0), "percentageTimeForWeek", "employer.duty.form.error.percentage");
 		}
 
-		errors.state(request, !(entity.isFinalMode() && sum != 100.0), "percentageTimeForWeek", "employer.duty.form.error.percentage");
+		Collection<SpamWord> spamWords;
+		spamWords = this.repository.findManyAllSpamWord();
 
-		String descriptor = entity.getDescriptor().getTitle();
 		String title = entity.getTitle();
 		String reference = entity.getReference();
 		String description = entity.getDescription();
 		String moreInfo = entity.getMoreInfo();
-		Collection<SpamWord> spamWords;
+		if (descriptor != null) {
+			errors.state(request, !(entity.isFinalMode() && this.is_spam(descriptor, spamWords)), "descriptor", "employer.job.form.error.spam");
+		}
 
-		spamWords = this.repository.findManyAllSpamWord();
+		errors.state(request, !(entity.isFinalMode() && this.is_spam(reference, spamWords)), "reference", "employer.job.form.error.spam");
+		errors.state(request, !(entity.isFinalMode() && this.is_spam(title, spamWords)), "title", "employer.job.form.error.spam");
+		errors.state(request, !(entity.isFinalMode() && this.is_spam(description, spamWords)), "description", "employer.job.form.error.spam");
+		errors.state(request, !(entity.isFinalMode() && this.is_spam(moreInfo, spamWords)), "moreInfo", "employer.job.form.error.spam");
 
-		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
 	}
 
 	@Override
 	public void update(final Request<Job> request, final Job entity) {
 		assert request != null;
 		assert entity != null;
+
 		Descriptor oldDescriptor = entity.getDescriptor();
-		if (oldDescriptor.getTitle().equals(this.repository.findOneById(entity.getId()).getDescriptor().getTitle())) {
-			this.repository.save(entity);
-		} else {
-			if (oldDescriptor != null) {
-				oldDescriptor.setJob(null);
-				this.repository.save(oldDescriptor);
-			}
-			String title = request.getModel().getString("descriptor");
-			if (title == "" || title == null) {
+		String newTitle = request.getModel().getString("descriptor");
+
+		if (oldDescriptor == null) {
+			if (newTitle == null || newTitle == "") {
 				entity.setDescriptor(null);
 			} else {
 				Descriptor newDescriptor = new Descriptor();
-				newDescriptor.setTitle(title);
+				newDescriptor.setTitle(newTitle);
 				newDescriptor.setJob(entity);
 				this.repository.save(newDescriptor);
-
 				entity.setDescriptor(newDescriptor);
 			}
-			this.repository.save(entity);
-		}
 
+		} else {
+			if (newTitle == "" || newTitle == null) {
+				entity.setDescriptor(null);
+				this.repository.deleteAll(oldDescriptor.getDuty());
+				this.repository.delete(oldDescriptor);
+			} else {
+				Descriptor newDescriptor = new Descriptor();
+				newDescriptor.setTitle(newTitle);
+
+				if (!entity.getDescriptor().getTitle().equals(newTitle)) {
+					newDescriptor.setJob(entity);
+					this.repository.save(newDescriptor);
+					this.repository.deleteAll(oldDescriptor.getDuty());
+					this.repository.delete(oldDescriptor);
+					entity.setDescriptor(newDescriptor);
+				}
+			}
+		}
+		this.repository.save(entity);
 	}
 
 	private boolean is_spam(final String text, final Collection<SpamWord> spamWords) {
