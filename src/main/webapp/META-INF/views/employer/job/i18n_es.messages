@@ -25,6 +25,7 @@ employer.job.form.error.finalMode = El modo final no puede ser verdadero
 employer.job.form.error.descriptor = El descriptor no puede ser nulo
 employer.job.form.error.application = No se puede borrar: está aplicado a un trabajador
 employer.job.form.error.reference = El trabajo con ese número de referencia ya está creado
+employer.job.form.error.ref = El trabajo con ese número de referencia ya está creado por otro empleador
 employer.job.form.error.descriptor.title = El descriptor está ya creado
 employer.job.form.error.spam = El trabajo no puede contener palaras spam
 
