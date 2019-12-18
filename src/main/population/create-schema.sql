@@ -58,6 +58,16 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `auditors_request` (
+       `id` integer not null,
+        `version` integer not null,
+        `accepted` bit,
+        `firm` varchar(255),
+        `responsability_statement` varchar(255),
+        `user_account_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `authenticated` (
        `id` integer not null,
         `version` integer not null,
@@ -191,8 +201,11 @@
     ) engine=InnoDB;
 
     create table `message_thread_user_account` (
-       `message_thread_id` integer not null,
-        `users_id` integer not null
+       `id` integer not null,
+        `version` integer not null,
+        `message_thread_id` integer,
+        `user_account_id` integer,
+        primary key (`id`)
     ) engine=InnoDB;
 
     create table `non_commercial_banner` (
@@ -343,6 +356,11 @@ create index IDXh9syauj4iixf18uts83saik5d on `request` (`ticker`);
        foreign key (`job_id`) 
        references `job` (`id`);
 
+    alter table `auditors_request` 
+       add constraint `FKo9yoxw3isaapgkwfhg252g5yv` 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
        foreign key (`user_account_id`) 
@@ -384,14 +402,14 @@ create index IDXh9syauj4iixf18uts83saik5d on `request` (`ticker`);
        references `message_thread` (`id`);
 
     alter table `message_thread_user_account` 
-       add constraint `FKnbmip5t870fxbecafgaxvyde8` 
-       foreign key (`users_id`) 
-       references `user_account` (`id`);
-
-    alter table `message_thread_user_account` 
        add constraint `FKtchis3o5qij98x87mty6hdk4d` 
        foreign key (`message_thread_id`) 
        references `message_thread` (`id`);
+
+    alter table `message_thread_user_account` 
+       add constraint `FK5lulj1y29jm6k2b4mle9218ap` 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
 
     alter table `non_commercial_banner` 
        add constraint `FKpcpr0xb5k7s4rxv5pulstt5v9` 

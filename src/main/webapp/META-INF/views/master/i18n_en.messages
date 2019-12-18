@@ -50,6 +50,7 @@ master.menu.authenticated.challenge = Challenges
 master.menu.authenticated.company-record= Companies
 master.menu.authenticated.job = Jobs
 master.menu.authenticated.message-thread = Message Threads
+master.menu.authenticated.message-thread.create = Create message thread
 
 # master.menu.administrator ###################################################
 
@@ -136,6 +137,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.auditors-request.create = Request to become an auditor
+
 
 # master.footer ###############################################################
 

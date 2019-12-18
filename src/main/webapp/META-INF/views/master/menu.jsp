@@ -56,6 +56,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.company-record" action="/authenticated/company-record/list" />
 			<acme:menu-suboption code="master.menu.authenticated.job" action="/authenticated/job/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.message-thread" action="/authenticated/message-thread/list_mine"/>
+			<acme:menu-suboption code="master.menu.authenticated.message-thread.create" action="/authenticated/message-thread/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
@@ -115,6 +116,7 @@
 				access="!hasRole('Consumer')" />
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update"
 				access="hasRole('Consumer')" />
+			<acme:menu-suboption access="!hasRole('Administrator')" code="master.menu.user-account.auditors-request.create" action="/authenticated/auditors-request/create"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/master/sign-out" access="isAuthenticated()" />

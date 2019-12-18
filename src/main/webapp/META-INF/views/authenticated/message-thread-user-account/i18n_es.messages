@@ -1,0 +1,11 @@
+authenticated.message-thread-user-account.list.label.username = Nombre de usuario
+authenticated.message-thread-user-account.list.label.fullName = Nombre completo
+
+authenticated.message-thread-user-account.list.button.add-user = Agregar usuario
+
+authenticated.message-thread-user-account.form.label.username = Nombre de usuario
+authenticated.message-thread-user-account.form.label.fullName = Nombre completo
+
+authenticated.message-thread-user-account.form.button.add = Agregar usuario
+authenticated.message-thread-user-account.form.button.return = Volver
+authenticated.message-thread-user-account.form.button.delete = Eliminar usuario del hilo

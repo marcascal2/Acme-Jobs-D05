@@ -2,6 +2,8 @@
 package acme.features.authenticated.message_thread;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class AuthenticatedMessageThreadShowService implements AbstractShowServic
 
 		messageThreadId = request.getModel().getInteger("id");
 		messageThread = this.repository.findOneById(messageThreadId);
-		authorisedUsers = messageThread.getUsers();
+		authorisedUsers = messageThread.getMessageThreadsOfUserAccount().stream().map(x -> x.getUserAccount()).collect(Collectors.toList());
 		principal = request.getPrincipal();
 
 		result = authorisedUsers.stream().anyMatch(x -> x.getId() == principal.getAccountId());
@@ -49,6 +51,13 @@ public class AuthenticatedMessageThreadShowService implements AbstractShowServic
 
 		request.unbind(entity, model, "title", "moment", "messages");
 		model.setAttribute("messageThreadId", entity.getId());
+
+		Collection<UserAccount> allUserAccounts = this.repository.findManyUserAccounts();
+		List<UserAccount> existingUserAccounts = entity.getMessageThreadsOfUserAccount().stream().map(x -> x.getUserAccount()).collect(Collectors.toList());
+		List<UserAccount> usersToAdd = allUserAccounts.stream().filter(x -> !existingUserAccounts.contains(x)).collect(Collectors.toList());
+
+		boolean allUsersAdded = usersToAdd.size() < 1;
+		model.setAttribute("allUsersAdded", allUsersAdded);
 	}
 
 	@Override

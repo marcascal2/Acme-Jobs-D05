@@ -1,0 +1,9 @@
+administrator.auditors-request.list.label.username = Usuario:
+administrator.auditors-request.list.label.firm = Firma:
+administrator.auditors-request.list.label.responsabilityStatement = Declaración de responsabilidad:
+
+administrator.auditors-request.form.label.firm = Firma:
+administrator.auditors-request.form.label.responsabilityStatement = Declaración de responsabilidad:
+administrator.auditors-request.form.button.update = Aceptar solicitud
+administrator.auditors-request.form.button.return = Volver
+

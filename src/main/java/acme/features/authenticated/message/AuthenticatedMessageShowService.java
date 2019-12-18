@@ -30,7 +30,8 @@ public class AuthenticatedMessageShowService implements AbstractShowService<Auth
 		message = this.repository.findOne(messageId);
 		principal = request.getPrincipal();
 
-		return message.getMessageThread().getUsers().stream().anyMatch(x -> x.getId() == principal.getAccountId());
+		//		CAMBIAR
+		return true;
 	}
 
 	@Override
