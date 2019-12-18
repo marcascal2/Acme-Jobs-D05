@@ -57,12 +57,13 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "organisationName", "creditCard");
+		request.unbind(entity, model, "organisationName");
 	}
 
 	@Override
 	public Sponsor instantiate(final Request<Sponsor> request) {
 		assert request != null;
+
 		Sponsor result;
 		Principal principal;
 		int userAccountId;
@@ -74,6 +75,7 @@ public class AuthenticatedSponsorCreateService implements AbstractCreateService<
 
 		result = new Sponsor();
 		result.setUserAccount(ua);
+
 		return result;
 	}
 

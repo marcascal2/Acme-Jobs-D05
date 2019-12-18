@@ -57,7 +57,16 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "organisationName", "creditCard");
+		int accId = request.getPrincipal().getAccountId();
+		Sponsor s = this.repository.findOneSponsorByUserAccountId(accId);
+		boolean creditCard = s.getCreditCard() != null;
+
+		model.setAttribute("creditCard", creditCard);
+
+		int sponsorId = entity.getId();
+		model.setAttribute("sponsorId", sponsorId);
+
+		request.unbind(entity, model, "organisationName");
 	}
 
 	@Override
@@ -81,6 +90,7 @@ public class AuthenticatedSponsorUpdateService implements AbstractUpdateService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+
 	}
 
 	@Override

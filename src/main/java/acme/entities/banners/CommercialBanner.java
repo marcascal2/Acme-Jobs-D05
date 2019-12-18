@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.roles.Sponsor;
@@ -32,7 +33,7 @@ public class CommercialBanner extends DomainEntity {
 	@URL
 	private String				target;
 
-	@NotBlank
+	@CreditCardNumber
 	private String				creditCard;
 
 	//Relationship

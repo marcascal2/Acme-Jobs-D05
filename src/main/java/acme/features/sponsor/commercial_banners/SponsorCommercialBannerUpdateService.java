@@ -77,6 +77,17 @@ public class SponsorCommercialBannerUpdateService implements AbstractUpdateServi
 		assert entity != null;
 		assert errors != null;
 
+		//		int sId = request.getPrincipal().getActiveRoleId();
+		//		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(sId);
+		//		CreditCard c = cb.getCreditCard();
+		//		String s1 = c.getMonth() + "/" + c.getYear();
+		//		LocalDate exp = LocalDate.parse(s1, DateTimeFormatter.ofPattern("MM/yyyy"));
+		//		String s2 = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy"));
+		//		LocalDate now = LocalDate.parse(s2, DateTimeFormatter.ofPattern("MM/yyyy"));
+		//
+		//		boolean expiredCard = exp.compareTo(now) < 0;
+		//		errors.state(request, expiredCard, "expiredCard", "sponsor.commercial-banner.form.errors.expiredCard");
+
 		Collection<SpamWord> spamWords;
 		spamWords = this.repository.findAllSpamWords();
 
@@ -86,6 +97,22 @@ public class SponsorCommercialBannerUpdateService implements AbstractUpdateServi
 
 	@Override
 	public void update(final Request<CommercialBanner> request, final CommercialBanner entity) {
+		assert request != null;
+		assert entity != null;
+
+		//		int sId = request.getPrincipal().getActiveRoleId();
+		//		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(sId);
+		//		CreditCard updatedCC = cb.getCreditCard();
+		//
+		//		CreditCard oldCC = entity.getCreditCard();
+		//
+		//		oldCC.setTitleHolder(updatedCC.getTitleHolder());
+		//		oldCC.setCvc(updatedCC.getCvc());
+		//		oldCC.setCreditCardNumber(updatedCC.getCreditCardNumber());
+		//		oldCC.setMonth(updatedCC.getMonth());
+		//		oldCC.setYear(updatedCC.getYear());
+		//
+		//		entity.setCreditCard(oldCC);
 		this.repository.save(entity);
 
 	}

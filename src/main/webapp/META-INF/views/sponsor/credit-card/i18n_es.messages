@@ -1,0 +1,11 @@
+sponsor.credit-card.form.label.titleHolder = Titular:
+sponsor.credit-card.form.label.creditCardNumber = Número de tarjeta: 
+sponsor.credit-card.form.label.cvc = CVC: 
+sponsor.credit-card.form.label.month = Mes:
+sponsor.credit-card.form.label.year = Año:
+
+sponsor.credit-card.form.button.create = Registrar tarjeta
+sponsor.credit-card.form.button.update = Actualizar tarjeta
+sponsor.credit-card.form.button.return = Volver
+
+sponsor.credit-card.form.errors.expiredCard = Esta tarjeta está caducada
