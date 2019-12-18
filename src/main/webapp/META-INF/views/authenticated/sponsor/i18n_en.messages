@@ -1,12 +1,9 @@
 authenticated.sponsor.form.label.organisationName = Organisation name:
-authenticated.sponsor.form.label.credit-card.titleHolder = Title holder:
-authenticated.sponsor.form.label.credit-card.creditCardNumber = Credit card number: 
-authenticated.sponsor.form.label.credit-card.cvc = CVC: 
-authenticated.sponsor.form.label.credit-card.month = Month:
-authenticated.sponsor.form.label.credit-card.year = Year:
+
+authenticated.sponsor.credit-card.form.button.create = Register credit card
+authenticated.sponsor.credit-card.form.button.update = Update credit card
 
 authenticated.sponsor.form.button.create = Register
 authenticated.sponsor.form.button.update = Update
 authenticated.sponsor.form.button.return = Return
 
-authenticated.sponsor.form.errors.expiredCard = This is a expired credit card

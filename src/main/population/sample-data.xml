@@ -265,13 +265,35 @@
 	</bean>
 
 
+	<!-- Credit cards -->
+	
+	<bean id="creditCard1" class="acme.entities.credit_cards.CreditCard">
+		<property name="titleHolder" value="Anna Baker" />
+		<property name="creditCardNumber" value="5511316138220570" />
+		<property name="month" value="03" />
+		<property name="year" value="2020" />
+		<property name="cvc" value="452" />
+		<property name="sponsor" ref="sponsor3Sponsor" />
+	</bean>
+
+
+	<bean id="creditCard2" class="acme.entities.credit_cards.CreditCard">
+		<property name="titleHolder" value="Pol Hernández" />
+		<property name="creditCardNumber" value="5313694966604077" />
+		<property name="month" value="10" />
+		<property name="year" value="2022" />
+		<property name="cvc" value="759" />
+		<property name="sponsor" ref="sponsor1Sponsor" />
+	</bean>
+	
+
 	<!-- Commercial banners -->
 
 	<bean id="commercialBanner01" class="acme.entities.banners.CommercialBanner">
 		<property name="picture" value="https://www.dropbox.com/s/27pgcxdp7717lgu/banner4.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 1" />
 		<property name="target" value="http://www.github.com/" />
-		<property name="creditCard" value="4111 1111 1111 1111" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor2Sponsor" />
 	</bean>
 
@@ -279,7 +301,7 @@
 		<property name="picture" value="https://www.dropbox.com/s/jx64uaxs1yh8nqs/banner5.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 2" />
 		<property name="target" value="http://www.dropbox.com/" />
-		<property name="creditCard" value="5500 0000 0000 0004" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor3Sponsor" />
 	</bean>
 
@@ -287,7 +309,7 @@
 		<property name="picture" value="https://www.dropbox.com/s/qy602gkel4v8jl0/banner6.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 3" />
 		<property name="target" value="http://www.ev.us.es/" />
-		<property name="creditCard" value="5500 0000 0000 0004" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor3Sponsor" />
 	</bean>
 	
@@ -295,7 +317,7 @@
 		<property name="picture" value="https://www.dropbox.com/s/27pgcxdp7717lgu/banner4.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 4" />
 		<property name="target" value="http://www.github.com/" />
-		<property name="creditCard" value="4111 1111 1111 1111" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor2Sponsor" />
 	</bean>
 
@@ -303,7 +325,7 @@
 		<property name="picture" value="https://www.dropbox.com/s/jx64uaxs1yh8nqs/banner5.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 5" />
 		<property name="target" value="http://www.dropbox.com/" />
-		<property name="creditCard" value="5500 0000 0000 0004" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor1Sponsor" />
 	</bean>
 
@@ -311,7 +333,7 @@
 		<property name="picture" value="https://www.dropbox.com/s/qy602gkel4v8jl0/banner6.jpg?dl=0" />
 		<property name="slogan" value="Commercial banner 6" />
 		<property name="target" value="http://www.ev.us.es/" />
-		<property name="creditCard" value="5500 0000 0000 0004" />
+		<property name="creditCard" value="5313694966604077" />
 		<property name="sponsor" ref="sponsor1Sponsor" />
 	</bean>
 
@@ -1383,7 +1405,7 @@
 	
 	<bean name="sponsor1Sponsor" class="acme.entities.roles.Sponsor">
 		<property name="organisationName" value="Pepsico and NFL" />
-		<property name="creditCard" value="" />
+		<property name="creditCard" ref="creditCard2" />
 		<property name="userAccount" ref="sponsor1UserAccount" />
 	</bean>
 
@@ -1391,7 +1413,7 @@
 		<property name="userAccount" ref="sponsor1UserAccount" />
 	</bean>
 
-		<bean name="sponsor2UserAccount" class="acme.framework.entities.UserAccount">
+	<bean name="sponsor2UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="sponsor2"/>
 		<property name="password" value="sponsor2"/>
 		<property name="enabled" value="true"/>
@@ -1412,7 +1434,6 @@
 	
 	<bean name="sponsor2Sponsor" class="acme.entities.roles.Sponsor">
 		<property name="organisationName" value="Ted y Rolex" />
-		<property name="creditCard" value="4111 1111 1111 1111" />
 		<property name="userAccount" ref="sponsor2UserAccount" />
 	</bean>
 
@@ -1441,7 +1462,7 @@
 
 	<bean name="sponsor3Sponsor" class="acme.entities.roles.Sponsor">
 		<property name="organisationName" value="TIFF y L’Oréal" />
-		<property name="creditCard" value="5500 0000 0000 0004" />
+		<property name="creditCard" ref="creditCard1" />
 		<property name="userAccount" ref="sponsor3UserAccount" />
 	</bean>
 

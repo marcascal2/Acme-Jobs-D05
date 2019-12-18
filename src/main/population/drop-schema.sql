@@ -15,17 +15,17 @@
        drop 
        foreign key `FKmbjdoxi3o93agxosoate4sxbt`;
 
+    alter table `audit_record` 
+       drop 
+       foreign key `FKmryxi458u0xeo07s40poxshk6`;
+
+    alter table `audit_record` 
+       drop 
+       foreign key `FKlbvbyimxf6pxvbhkdd4vfhlnd`;
+
     alter table `auditor` 
        drop 
        foreign key FK_clqcq9lyspxdxcp6o4f3vkelj;
-
-    alter table `auditor_record` 
-       drop 
-       foreign key `FK2ck5stk38bbuyidbdwsm7nndj`;
-
-    alter table `auditor_record` 
-       drop 
-       foreign key `FKcpwoo69w5dhtr8nvg0xhl9qv9`;
 
     alter table `authenticated` 
        drop 
@@ -38,6 +38,10 @@
     alter table `consumer` 
        drop 
        foreign key FK_6cyha9f1wpj0dpbxrrjddrqed;
+
+    alter table `credit_card` 
+       drop 
+       foreign key `FK31l5hvh7p1nx1aw6v649gw3rc`;
 
     alter table `descriptor` 
        drop 
@@ -77,6 +81,10 @@
 
     alter table `sponsor` 
        drop 
+       foreign key `FK28mvxtnmfjcwiw34vs8ryqkpa`;
+
+    alter table `sponsor` 
+       drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
 
     alter table `worker` 
@@ -91,9 +99,9 @@
 
     drop table if exists `application`;
 
-    drop table if exists `auditor`;
+    drop table if exists `audit_record`;
 
-    drop table if exists `auditor_record`;
+    drop table if exists `auditor`;
 
     drop table if exists `authenticated`;
 
@@ -104,6 +112,8 @@
     drop table if exists `company_record`;
 
     drop table if exists `consumer`;
+
+    drop table if exists `credit_card`;
 
     drop table if exists `descriptor`;
 

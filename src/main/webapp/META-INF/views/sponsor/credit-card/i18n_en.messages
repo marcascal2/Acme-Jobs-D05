@@ -1,0 +1,11 @@
+sponsor.credit-card.form.label.titleHolder = Title holder:
+sponsor.credit-card.form.label.creditCardNumber = Credit card number: 
+sponsor.credit-card.form.label.cvc = CVC: 
+sponsor.credit-card.form.label.month = Month:
+sponsor.credit-card.form.label.year = Year:
+
+sponsor.credit-card.form.button.create = Register credit card
+sponsor.credit-card.form.button.update = Update credit card
+sponsor.credit-card.form.button.return = Return
+
+sponsor.credit-card.form.errors.expiredCard = This is a expired credit card

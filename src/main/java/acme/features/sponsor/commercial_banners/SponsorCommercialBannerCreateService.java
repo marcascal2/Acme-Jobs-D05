@@ -1,8 +1,6 @@
 
 package acme.features.sponsor.commercial_banners;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.banners.CommercialBanner;
-import acme.entities.credit_cards.CreditCard;
 import acme.entities.roles.Sponsor;
 import acme.entities.spam_words.SpamWord;
 import acme.framework.components.Errors;
@@ -57,23 +54,21 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "picture", "slogan", "target", "creditCard.titleHolder", "creditCard.creditCardNumber", "creditCard.month", "creditCard.year", "creditCard.cvc");
+		request.unbind(entity, model, "picture", "slogan", "target", "creditCard");
 	}
 
 	@Override
 	public CommercialBanner instantiate(final Request<CommercialBanner> request) {
 		assert request != null;
 
-		Principal principal;
-		Sponsor sponsor;
-		CommercialBanner result = new CommercialBanner();
+		CommercialBanner commercialBanner = new CommercialBanner();
+		Principal principal = request.getPrincipal();
+		int idPrincipal = principal.getActiveRoleId();
 
-		principal = request.getPrincipal();
-		sponsor = this.repository.findSponsorbySponsorId(principal.getActiveRoleId());
-		result.setSponsor(sponsor);
-		result.setCreditCard(sponsor.getCreditCard());
+		Sponsor sponsor = this.repository.findSponsorbySponsorId(idPrincipal);
+		commercialBanner.setSponsor(sponsor);
 
-		return result;
+		return commercialBanner;
 	}
 
 	@Override
@@ -88,16 +83,16 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		boolean isSpam = this.is_spam(entity.getSlogan(), spamWords);
 		errors.state(request, !isSpam, "slogan", "sponsor.commercial-banner.form.error.span");
 
-		int uaId = request.getPrincipal().getAccountId();
-		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(uaId);
-		CreditCard c = cb.getCreditCard();
-		String s1 = c.getMonth() + "/" + c.getYear();
-		LocalDate exp = LocalDate.parse(s1, DateTimeFormatter.ofPattern("MM/yyyy"));
-		String s2 = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy"));
-		LocalDate now = LocalDate.parse(s2, DateTimeFormatter.ofPattern("MM/yyyy"));
-
-		boolean expiredCard = exp.compareTo(now) < 0;
-		errors.state(request, expiredCard, "expiredCard", "sponsor.commercial-banner.form.errors.expiredCard");
+		//		int uaId = request.getPrincipal().getAccountId();
+		//		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(uaId);
+		//		CreditCard c = cb.getCreditCard();
+		//		String s1 = c.getMonth() + "/" + c.getYear();
+		//		LocalDate exp = LocalDate.parse(s1, DateTimeFormatter.ofPattern("MM/yyyy"));
+		//		String s2 = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yyyy"));
+		//		LocalDate now = LocalDate.parse(s2, DateTimeFormatter.ofPattern("MM/yyyy"));
+		//
+		//		boolean expiredCard = exp.compareTo(now) < 0;
+		//		errors.state(request, expiredCard, "expiredCard", "sponsor.commercial-banner.form.errors.expiredCard");
 	}
 
 	@Override
@@ -105,19 +100,19 @@ public class SponsorCommercialBannerCreateService implements AbstractCreateServi
 		assert request != null;
 		assert entity != null;
 
-		int uaId = request.getPrincipal().getActiveRoleId();
-		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(uaId);
-		CreditCard updatedCC = cb.getCreditCard();
-
-		CreditCard newCC = new CreditCard();
-
-		newCC.setTitleHolder(updatedCC.getTitleHolder());
-		newCC.setCvc(updatedCC.getCvc());
-		newCC.setCreditCardNumber(updatedCC.getCreditCardNumber());
-		newCC.setMonth(updatedCC.getMonth());
-		newCC.setYear(updatedCC.getYear());
-
-		entity.setCreditCard(newCC);
+		//		int uaId = request.getPrincipal().getActiveRoleId();
+		//		CommercialBanner cb = this.repository.findOneCommercialBannerBySponsorId(uaId);
+		//		CreditCard updatedCC = cb.getCreditCard();
+		//
+		//		CreditCard newCC = new CreditCard();
+		//
+		//		newCC.setTitleHolder(updatedCC.getTitleHolder());
+		//		newCC.setCvc(updatedCC.getCvc());
+		//		newCC.setCreditCardNumber(updatedCC.getCreditCardNumber());
+		//		newCC.setMonth(updatedCC.getMonth());
+		//		newCC.setYear(updatedCC.getYear());
+		//
+		//		entity.setCreditCard(newCC);
 
 		this.repository.save(entity);
 	}

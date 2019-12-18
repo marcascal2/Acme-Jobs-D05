@@ -17,16 +17,16 @@ public class Sponsor extends UserRole {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
-	private String				organisationName;
+	private String organisationName;
+
+	// Relationships -----------------------------------------------------
 
 	@OneToOne(optional = true)
-	private CreditCard			creditCard;
-
-	// Derived attributes -----------------------------------------------------
+	private CreditCard creditCard;
 
 }

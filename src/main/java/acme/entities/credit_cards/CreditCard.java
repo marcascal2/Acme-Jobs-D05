@@ -10,7 +10,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Range;
 
-import acme.entities.banners.CommercialBanner;
 import acme.entities.roles.Sponsor;
 import acme.framework.entities.DomainEntity;
 import lombok.Getter;
@@ -45,11 +44,8 @@ public class CreditCard extends DomainEntity {
 	@Pattern(regexp = "\\d{4}", message = "XXXX")
 	private String				year;
 
-	//Relationship
-	//Relationship
-	@OneToOne(optional = false)
-	private CommercialBanner	commercialBanner;
+	//	Relationship
 
-	@OneToOne(optional = true)
+	@OneToOne(optional = false)
 	private Sponsor				sponsor;
 }

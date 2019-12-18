@@ -17,11 +17,7 @@ sponsor.commercial-banner.list.label.credit-card = Tarjeta de crédito
 sponsor.commercial-banner.form.label.picture = Fotografía:
 sponsor.commercial-banner.form.label.slogan = Eslogan:
 sponsor.commercial-banner.form.label.target = Target:
-sponsor.commercial-banner.form.label.credit-card.titleHolder = Titular:
-sponsor.commercial-banner.form.label.credit-card.creditCardNumber = Número de tarjeta: 
-sponsor.commercial-banner.form.label.credit-card.cvc = CVC: 
-sponsor.commercial-banner.form.label.credit-card.month = Mes:
-sponsor.commercial-banner.form.label.credit-card.year = Año:
+sponsor.commercial-banner.form.label.credit-card = Número de tarjeta de crédito:
 
 sponsor.commercial-banner.form.errors.expiredCard = Esta tarjeta está caducada
 sponsor.commercial-banner.form.error.span = El eslogan es considerado spam, por favor cámbielo
