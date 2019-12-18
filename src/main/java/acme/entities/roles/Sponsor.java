@@ -2,8 +2,10 @@
 package acme.entities.roles;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
+import acme.entities.credit_cards.CreditCard;
 import acme.framework.entities.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +24,8 @@ public class Sponsor extends UserRole {
 	@NotBlank
 	private String				organisationName;
 
-	private String				creditCard;
+	@OneToOne(optional = true)
+	private CreditCard			creditCard;
 
 	// Derived attributes -----------------------------------------------------
 

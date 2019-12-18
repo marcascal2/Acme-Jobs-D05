@@ -25,4 +25,7 @@ public interface SponsorCommercialBannerRepository extends AbstractRepository {
 
 	@Query("select sw from SpamWord sw")
 	Collection<SpamWord> findAllSpamWords();
+
+	@Query("select c from CommercialBanner c where c.sponsor.id = ?1")
+	CommercialBanner findOneCommercialBannerBySponsorId(int sponsorId);
 }

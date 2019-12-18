@@ -1,6 +1,13 @@
 authenticated.sponsor.form.label.organisationName = Nombre de la organización:
-authenticated.sponsor.form.label.creditCard = Tarjeta de crédito:
+authenticated.sponsor.form.label.credit-card.titleHolder = Titular:
+authenticated.sponsor.form.label.credit-card.creditCardNumber = Número de tarjeta: 
+authenticated.sponsor.form.label.credit-card.cvc = CVC: 
+authenticated.sponsor.form.label.credit-card.month = Mes:
+authenticated.sponsor.form.label.credit-card.year = Año:
+
 authenticated.sponsor.form.button.create = Registrar
 authenticated.sponsor.form.button.update = Actualizar
 authenticated.sponsor.form.button.return = Volver
 
+
+authenticated.sponsor.form.errors.expiredCard = Esta tarjeta está caducada
