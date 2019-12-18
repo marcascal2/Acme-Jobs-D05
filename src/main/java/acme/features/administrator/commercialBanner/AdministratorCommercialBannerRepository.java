@@ -17,4 +17,5 @@ public interface AdministratorCommercialBannerRepository extends AbstractReposit
 
 	@Query("select cb from CommercialBanner cb")
 	Collection<CommercialBanner> findManyCommercialBanners();
+
 }
