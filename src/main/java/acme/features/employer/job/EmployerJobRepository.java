@@ -16,13 +16,13 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface EmployerJobRepository extends AbstractRepository {
 
-	@Query("select j from Job j")
+	@Query("select j from Job j join fetch j.application a")
 	Collection<Job> findAllJobs();
 
-	@Query("select j from Job j where j.id = ?1")
+	@Query("select j from Job j join fetch j.application a where j.id = ?1")
 	Job findOneById(int id);
 
-	@Query("select j from Job j where j.employer.id = ?1")
+	@Query("select j from Job j join fetch j.application a where j.employer.id = ?1")
 	Collection<Job> findManyByEmployerId(int employerId);
 
 	@Query("select a from Application a where a.id = ?1")
@@ -34,7 +34,7 @@ public interface EmployerJobRepository extends AbstractRepository {
 	@Query("select s from SpamWord s")
 	Collection<SpamWord> findManyAllSpamWord();
 
-	@Query("select d from Duty d where d.descriptor.id = ?1")
+	@Query("select d from Duty d join fetch d.descriptor where d.id = :descriptorId")
 	Collection<Duty> findManyByDescriptorId(int descriptorId);
 
 }

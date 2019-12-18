@@ -72,7 +72,9 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 		assert entity != null;
 		assert errors != null;
 
-		Collection<Duty> duties = this.repository.findManyByDescriptorId(entity.getDescriptor().getId());
+		String descriptorId;
+		descriptorId = request.getServletRequest().getParameter("descriptor_id");
+		Collection<Duty> duties = this.repository.findManyByDescriptorId(Integer.parseInt(descriptorId));
 		Double sum = 0.0;
 		for (Duty duty : duties) {
 			if (duty.getPercentageTimeForWeek() != null && duty.getId() != entity.getId()) {

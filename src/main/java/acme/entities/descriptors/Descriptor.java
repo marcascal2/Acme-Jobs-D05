@@ -8,9 +8,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import acme.entities.duties.Duty;
 import acme.entities.jobs.Job;
 import acme.framework.entities.DomainEntity;
@@ -32,7 +29,6 @@ public class Descriptor extends DomainEntity {
 	@OneToOne(optional = true)
 	private Job					job;
 
-	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "descriptor")
 	private Collection<Duty>	duty;
 }

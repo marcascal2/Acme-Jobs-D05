@@ -38,9 +38,10 @@ public class EmployerDutyListService implements AbstractListService<Employer, Du
 	@Override
 	public Collection<Duty> findMany(final Request<Duty> request) {
 		assert request != null;
-		Collection<Duty> result;
-		String descriptorId = request.getServletRequest().getParameter("descriptor_id");
-		result = this.repository.findManyByDescriptorId(Integer.parseInt(descriptorId));
+		String descriptorId;
+		descriptorId = request.getServletRequest().getParameter("descriptor_id");
+
+		Collection<Duty> result = this.repository.findManyByDescriptorId(Integer.parseInt(descriptorId));
 		return result;
 
 	}

@@ -83,7 +83,6 @@ public class EmployerDutyCreateService implements AbstractCreateService<Employer
 
 		String descriptorId;
 		descriptorId = request.getServletRequest().getParameter("descriptor_id");
-
 		Collection<Duty> duties = this.repository.findManyByDescriptorId(Integer.parseInt(descriptorId));
 		Double sum = 0.0;
 
