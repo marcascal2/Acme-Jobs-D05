@@ -18,7 +18,7 @@
 	<acme:form-errors path="percentageTimeForWeek" />
 	<acme:form-errors path="finalMode" />
 	
-	<jstl:if test="${command != 'create'}">
+	<jstl:if test="${command != 'create' && command != 'update'}">
 	<jstl:if test="${not empty descriptor}">
 		<acme:form-submit method="get" code="employer.job.form.button.duty" action="/employer/duty/list?descriptor_id=${descriptorId }"/>
 		<jstl:if test="${status == 'DRAFT' && not sumPercentage}">
@@ -29,14 +29,14 @@
 		<acme:form-submit  method="get" code="employer.job.form.button.list-audit-records" action="/authenticated/audit-record/list?job_id=${idJob}"/>
 	</jstl:if>
 	
-	<jstl:if test="${status == 'DRAFT'}">
+	
 	<acme:form-submit test="${command == 'show'}" 
 		code="employer.job.form.button.update" 
 		action="/employer/job/update"/>
 	<acme:form-submit test="${command == 'update'}" 
 		code="employer.job.form.button.update" 
 		action="/employer/job/update"/>
-	</jstl:if>
+	
 	
 	<jstl:if test="${not applied}">
 	<acme:form-submit test="${command == 'show'}" 
