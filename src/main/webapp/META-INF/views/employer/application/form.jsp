@@ -9,7 +9,7 @@
 	<acme:form-textbox readonly="true" code="employer.application.form.label.reference" path="referenceNumber" />
 	<acme:form-moment readonly="true" code="employer.application.form.label.moment" path="moment" />
 
-	<acme:form-textbox readonly="false" code="employer.application.form.label.status" path="status" />
+	<acme:form-textbox readonly="false" code="employer.application.form.label.status" path="status" placeholder="PENDING, ACCEPTED or REJECTED"/>
 	<acme:form-textarea readonly="false" code="employer.application.form.label.justification" path="justification" />
 	
 	<acme:form-textbox readonly="true" code="employer.application.form.label.statement" path="statement" />

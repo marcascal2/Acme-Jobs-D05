@@ -1,0 +1,11 @@
+authenticated.message-thread-user-account.list.label.username = Username
+authenticated.message-thread-user-account.list.label.fullName = Full name
+
+authenticated.message-thread-user-account.list.button.add-user = Add user
+
+authenticated.message-thread-user-account.form.label.username = Username
+authenticated.message-thread-user-account.form.label.fullName = Full name
+
+authenticated.message-thread-user-account.form.button.add = Add user
+authenticated.message-thread-user-account.form.button.return = Return
+authenticated.message-thread-user-account.form.button.delete = Delete user from message thread

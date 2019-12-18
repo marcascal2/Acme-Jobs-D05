@@ -12,4 +12,4 @@ employer.duty.form.button.update = Actualizar
 employer.duty.form.button.return = Volver
 
 employer.duty.form.error.percentage = El porcentaje debe de ser 100 en modo final
-employer.duty.form.error.percentageLimit = El porcentaje tiene que estar entre 0 y 100
+employer.duty.form.error.percentageLimit = El porcentaje total ya es 100

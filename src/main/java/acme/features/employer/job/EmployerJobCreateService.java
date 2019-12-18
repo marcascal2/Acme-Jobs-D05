@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.descriptors.Descriptor;
 import acme.entities.jobs.Job;
+import acme.entities.jobs.JobStatus;
 import acme.entities.roles.Employer;
 import acme.entities.spam_words.SpamWord;
 import acme.framework.components.Errors;
@@ -31,16 +32,15 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
+
 		boolean result;
-		int jobId;
-		Job job;
 		Employer employer;
 		Principal principal;
-		jobId = request.getModel().getInteger("jobId");
-		job = this.repository.findOneById(jobId);
-		employer = job.getEmployer();
+
+		employer = this.repository.findEmployerById(request.getPrincipal().getActiveRoleId());
 		principal = request.getPrincipal();
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
+		result = employer.getUserAccount().getId() == principal.getAccountId();
+
 		return result;
 	}
 
@@ -61,7 +61,7 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert model != null;
 
 		request.unbind(entity, model, "reference", "title", "status", "deadline");
-		request.unbind(entity, model, "salary", "moreInfo", "description", "finalMode");
+		request.unbind(entity, model, "salary", "moreInfo", "description");
 	}
 
 	@Override
@@ -82,30 +82,22 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
-		String descriptor = request.getModel().getString("descriptor");
-		String title = request.getModel().getString("title");
-		String reference = request.getModel().getString("reference");
-		String description = request.getModel().getString("description");
-		String moreInfo = request.getModel().getString("moreInfo");
+		//CANNOT REPEAT THE JOB REFERENCE
 
-		Collection<SpamWord> spamWords = this.repository.findManyAllSpamWord();
-
-		boolean hasDescriptor = !descriptor.isEmpty();
-		boolean isFinalMode = request.getModel().getBoolean("finalMode");
-
-		errors.state(request, !(isFinalMode && !hasDescriptor), "descriptor", "employer.job.form.error.descriptor");
-
-		Collection<Job> jobs = this.repository.findManyByEmployerId(request.getPrincipal().getActiveRoleId());
-		for (Job job : jobs) {
-			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
+		String newReference = entity.getReference();
+		if (newReference != null && newReference != "") {
+			Job repeatedJob = this.repository.findOneByReference(newReference);
+			boolean referenceIsRepeated = repeatedJob != null;
+			errors.state(request, !referenceIsRepeated, "reference", "employer.job.form.error.reference");
 		}
 
-		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
+		//CHECK THAT IS NOT FINAL MODE
 
+		JobStatus status = entity.getStatus();
+		if (status != null) {
+			boolean isFinalMode = status.equals(JobStatus.PUBLISHED);
+			errors.state(request, !isFinalMode, "status", "employer.duty.form.error.percentage");
+		}
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class WorkerJobShowService implements AbstractShowService<Worker, Job> {
 
 		request.unbind(entity, model, "id", "reference", "title", "status", "deadline");
 
-		request.unbind(entity, model, "salary", "moreInfo", "description", "finalMode");
+		request.unbind(entity, model, "salary", "moreInfo", "description");
 
 		Descriptor descriptor = entity.getDescriptor();
 		model.setAttribute("descriptor", descriptor.getTitle());

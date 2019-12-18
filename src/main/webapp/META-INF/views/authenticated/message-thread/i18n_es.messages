@@ -8,4 +8,8 @@ authenticated.message-thread.form.label.message = Mensaje
 authenticated.message-thread.form.label.message-date = Fecha:
 
 authenticated.message-thread.form.button.return = Volver
+authenticated.message-thread.form.button.create = Crear hilo de mensajes
 authenticated.message-thread.form.button.list-messages = Ver mensajes
+authenticated.message-thread.form.button.list-users = Ver usuarios
+authenticated.message-thread.form.button.add-user = Agregar usuario
+authenticated.message-thread.form.button.add-message = Agregar mensaje

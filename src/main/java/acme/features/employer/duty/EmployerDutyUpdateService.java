@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.descriptors.Descriptor;
 import acme.entities.duties.Duty;
 import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
@@ -30,12 +29,12 @@ public class EmployerDutyUpdateService implements AbstractUpdateService<Employer
 		boolean result = false;
 
 		int idEmployer = request.getPrincipal().getActiveRoleId();
-		int idDescriptor = request.getModel().getInteger("descriptor_id");
+		int idDuty = request.getModel().getInteger("id");
 
-		Descriptor descriptor = this.repository.findDescriptorById(idDescriptor);
+		Duty duty = this.repository.findOneById(idDuty);
 		Employer employer = this.repository.findEmployerById(idEmployer);
 
-		result = descriptor.getJob().getEmployer().equals(employer);
+		result = duty.getDescriptor().getJob().getEmployer().equals(employer);
 
 		return result;
 	}

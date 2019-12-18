@@ -13,7 +13,6 @@ import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -28,17 +27,15 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
-		boolean result;
-		int jobId;
-		Job job;
-		Employer employer;
-		Principal principal;
-		jobId = request.getModel().getInteger("id");
-		job = this.repository.findOneById(jobId);
-		employer = job.getEmployer();
-		principal = request.getPrincipal();
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
-		return result;
+		int jobId = request.getModel().getInteger("id");
+		int employerId = request.getPrincipal().getActiveRoleId();
+
+		Job job = this.repository.findOneById(jobId);
+		Employer employer = this.repository.findEmployerById(employerId);
+
+		boolean isAuthorised = job.getEmployer().equals(employer);
+
+		return isAuthorised;
 	}
 
 	@Override
@@ -47,7 +44,7 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert entity != null;
 		assert model != null;
 		request.unbind(entity, model, "reference", "title", "status", "deadline");
-		request.unbind(entity, model, "salary", "moreInfo", "description", "finalMode");
+		request.unbind(entity, model, "salary", "moreInfo", "description");
 
 		Descriptor descriptor = entity.getDescriptor();
 		if (descriptor != null) {
@@ -59,12 +56,31 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 			Collection<Duty> duties = descriptor.getDuty();
 			model.setAttribute("duties", duties);
 
+			Double sum = 0.0;
+
+			for (Duty duty : duties) {
+				if (duty.getPercentageTimeForWeek() != null) {
+					sum = sum + duty.getPercentageTimeForWeek();
+				}
+			}
+
+			model.setAttribute("sumPercentage", sum == 100.0);
 		}
 		Collection<Application> applications = entity.getApplication();
 		model.setAttribute("application", applications);
 
 		int idJob = entity.getId();
 		model.setAttribute("idJob", idJob);
+
+		boolean applied = false;
+		for (Application a : applications) {
+			if (a.getWorker() != null) {
+				applied = true;
+				break;
+			}
+		}
+
+		model.setAttribute("applied", applied);
 	}
 
 	@Override
