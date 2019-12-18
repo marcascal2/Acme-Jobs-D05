@@ -6,7 +6,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,9 +13,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 
+import acme.entities.message_threads_user_accounts.MessageThreadUserAccount;
 import acme.entities.messages.Message;
 import acme.framework.entities.DomainEntity;
-import acme.framework.entities.UserAccount;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,24 +26,24 @@ public class MessageThread extends DomainEntity {
 
 	//Serialisation identifier --------------------------------------------------------
 
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
 	//Attributes ----------------------------------------------------------------------
 
 	@NotBlank
-	private String						title;
+	private String									title;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date						moment;
+	private Date									moment;
 
 	//Relationships -------------------------------------------------------------------
 
 	@Valid
-	@ManyToMany()
-	private Collection<UserAccount>		users;
+	@OneToMany(mappedBy = "messageThread")
+	private Collection<MessageThreadUserAccount>	messageThreadsOfUserAccount;
 
 	@Valid
 	@OneToMany(mappedBy = "messageThread", fetch = FetchType.EAGER)
-	private Collection<@Valid Message>	messages;
+	private Collection<@Valid Message>				messages;
 }

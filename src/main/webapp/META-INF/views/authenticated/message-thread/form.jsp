@@ -15,9 +15,14 @@
 		action="/authenticated/message-thread/create"/>
 	<acme:form-submit test="${command != 'create'}"
 		code="authenticated.message-thread.form.button.list-users" 
-		action="/authenticated/message-thread-user/list?messageThreadId=${messageThreadId}" method="get"/>	
+		action="/authenticated/message-thread-user-account/list?messageThreadId=${messageThreadId}" method="get"/>	
 	<acme:form-submit test="${command != 'create'}"
 		code="authenticated.message-thread.form.button.list-messages" 
 		action="/authenticated/message/list?messageThreadId=${messageThreadId}" method="get"/>	
-
+	<acme:form-submit test="${command == 'show' && !allUsersAdded}" method="get" 
+		code="authenticated.message-thread.form.button.add-user" 
+		action="/authenticated/message-thread-user-account/create?messageThreadId=${messageThreadId}"/>
+	<acme:form-submit test="${command == 'show'}" method="get" 
+		code="authenticated.message-thread.form.button.add-message" 
+		action="/authenticated/message/create?messageThreadId=${messageThreadId}"/>
 </acme:form>

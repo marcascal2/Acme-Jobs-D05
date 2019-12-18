@@ -2,6 +2,7 @@
 package acme.features.authenticated.message;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import acme.entities.messages.Message;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
-import acme.framework.entities.Principal;
+import acme.framework.entities.UserAccount;
 import acme.framework.services.AbstractListService;
 
 @Service
@@ -25,15 +26,21 @@ public class AuthenticatedMessageListService implements AbstractListService<Auth
 	public boolean authorise(final Request<Message> request) {
 		assert request != null;
 
-		Principal principal;
+		boolean result;
+		UserAccount user;
 		MessageThread messageThread;
+		Collection<UserAccount> authorisedUsers;
 		int messageThreadId;
 
-		principal = request.getPrincipal();
+		user = this.repository.findOneUserAccountById(request.getPrincipal().getAccountId());
 		messageThreadId = request.getModel().getInteger("messageThreadId");
 		messageThread = this.repository.findMessageThreadById(messageThreadId);
 
-		return messageThread.getUsers().stream().anyMatch(x -> x.getId() == principal.getAccountId());
+		authorisedUsers = messageThread.getMessageThreadsOfUserAccount().stream().map(x -> x.getUserAccount()).collect(Collectors.toList());
+
+		result = authorisedUsers.contains(user);
+
+		return result;
 	}
 
 	@Override

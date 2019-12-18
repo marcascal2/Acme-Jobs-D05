@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.message_threads.MessageThread;
+import acme.entities.message_threads_user_accounts.MessageThreadUserAccount;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -55,16 +56,8 @@ public class AuthenticatedMessageThreadCreateService implements AbstractCreateSe
 	@Override
 	public MessageThread instantiate(final Request<MessageThread> request) {
 		MessageThread result;
-		Principal principal;
-		UserAccount user;
-		Collection<UserAccount> messageThreadUsers = new ArrayList<UserAccount>();
-
-		principal = request.getPrincipal();
-		user = this.repository.findUserAccountById(principal.getAccountId());
 
 		result = new MessageThread();
-		messageThreadUsers.add(user);
-		result.setUsers(messageThreadUsers);
 
 		return result;
 	}
@@ -80,11 +73,24 @@ public class AuthenticatedMessageThreadCreateService implements AbstractCreateSe
 	@Override
 	public void create(final Request<MessageThread> request, final MessageThread entity) {
 		Date moment;
+		MessageThreadUserAccount mtua = new MessageThreadUserAccount();
+		Principal principal = request.getPrincipal();
+		UserAccount user = this.repository.findUserAccountById(principal.getAccountId());
+		Collection<MessageThreadUserAccount> messageThreadUsers = new ArrayList<MessageThreadUserAccount>();
+
+		entity.setMessageThreadsOfUserAccount(messageThreadUsers);
 
 		moment = new Date(System.currentTimeMillis() - 1);
 		entity.setMoment(moment);
+
 		this.repository.save(entity);
 
+		mtua.setUserAccount(user);
+		mtua.setMessageThread(entity);
+		this.repository.save(mtua);
+
+		messageThreadUsers.add(mtua);
+		this.repository.save(entity);
 	}
 
 }

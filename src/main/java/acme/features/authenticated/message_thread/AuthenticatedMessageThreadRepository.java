@@ -16,9 +16,12 @@ public interface AuthenticatedMessageThreadRepository extends AbstractRepository
 	@Query("select mt from MessageThread mt where mt.id = ?1")
 	MessageThread findOneById(int id);
 
-	@Query("select mt from MessageThread mt join mt.users u where u.id = ?1")
+	@Query("select mt from MessageThread mt join mt.messageThreadsOfUserAccount u where u.userAccount.id = ?1")
 	Collection<MessageThread> findManyByUserId(int userId);
 
 	@Query("select u from UserAccount u where u.id = ?1")
 	UserAccount findUserAccountById(int userId);
+
+	@Query("select ua from UserAccount ua")
+	Collection<UserAccount> findManyUserAccounts();
 }

@@ -5,5 +5,12 @@ authenticated.message.form.label.title = Title:
 authenticated.message.form.label.moment = Created:
 authenticated.message.form.label.tags = Tags:
 authenticated.message.form.label.body = Body:
+authenticated.message.form.label.confirmation = Confirm message
+
+authenticated.message.form.error.confirmation = You have to confirm the message
+sponsor.messsage.form.error.body.spam = The body is considered spam
+sponsor.messsage.form.error.tags.spam = The tags are considered spam
+sponsor.messsage.form.error.title.spam = The title is considered spam
 
 authenticated.message.form.button.return = Return
+authenticated.message.form.button.create = Publish message

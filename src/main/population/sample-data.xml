@@ -1439,11 +1439,9 @@
 	<bean name="messageThread1" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Opinions about the challenge"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-		<property name="users">
+		<property name="messageThreadsOfUserAccount">
 			<list>
-				<ref bean="worker1UserAccount"/>
-				<ref bean="employer1UserAccount"/>
-				<ref bean="auditor1UserAccount"/>
+				<ref bean="messageThreadUserAccount1"/>
 			</list>
 		</property>
 	</bean>
@@ -1451,50 +1449,26 @@
 	<bean name="messageThread2" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Prices"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-		<property name="users">
-			<list>
-				<ref bean="sponsor1UserAccount"/>
-				<ref bean="employer2UserAccount"/>
-			</list>
-		</property>
 	</bean>
 	
 	<bean name="messageThread3" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Jobs"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-		<property name="users">
-			<list>
-				<ref bean="worker3UserAccount"/>
-				<ref bean="auditor2UserAccount"/>
-				<ref bean="sponsor2UserAccount"/>
-			</list>
-		</property>
 	</bean>
 	
 	<bean name="messageThread4" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Searches"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-		<property name="users">
-			<list>
-				<ref bean="worker2UserAccount"/>
-				<ref bean="auditor2UserAccount"/>
-			</list>
-		</property>
 	</bean>
 	
 	<bean name="messageThread5" class="acme.entities.message_threads.MessageThread">
 		<property name="title" value="Problems"/>
 		<property name="moment" value="2018/12/11 23:59"/>
-		<property name="users">
-			<list>
-				<ref bean="worker1UserAccount"/>
-				<ref bean="sponsor1UserAccount"/>
-				<ref bean="worker3UserAccount"/>
-				<ref bean="employer2UserAccount"/>
-				<ref bean="auditor1UserAccount"/>
-				<ref bean="sponsor2UserAccount"/>
-			</list>
-		</property>
+	</bean>
+	
+	<bean name="messageThreadUserAccount1" class="acme.entities.message_threads_user_accounts.MessageThreadUserAccount">
+		<property name="messageThread" ref="messageThread1"/>
+		<property name="userAccount" ref="auditor1UserAccount"/>
 	</bean>
 	
 	

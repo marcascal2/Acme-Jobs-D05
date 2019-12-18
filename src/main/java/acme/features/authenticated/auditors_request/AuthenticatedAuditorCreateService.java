@@ -32,7 +32,7 @@ public class AuthenticatedAuditorCreateService implements AbstractCreateService<
 		boolean alreadyRequested;
 		principal = request.getPrincipal();
 		auditorRequest = this.repository.userAlreadyRequested(principal.getAccountId());
-		alreadyRequested = !auditorRequest.equals(null);
+		alreadyRequested = !(auditorRequest == null);
 
 		if (alreadyRequested) {
 			return false;

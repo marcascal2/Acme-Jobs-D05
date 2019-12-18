@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.message_threads.MessageThread;
 import acme.entities.messages.Message;
+import acme.entities.spam_words.SpamWord;
+import acme.framework.entities.UserAccount;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -21,4 +23,10 @@ public interface AuthenticatedMessageRepository extends AbstractRepository {
 
 	@Query("select mt from MessageThread mt where mt.id = ?1")
 	MessageThread findMessageThreadById(int id);
+
+	@Query("select ua from UserAccount ua where ua.id = ?1")
+	UserAccount findOneUserAccountById(int id);
+
+	@Query("select sw from SpamWord sw")
+	Collection<SpamWord> findAllSpamWords();
 }
