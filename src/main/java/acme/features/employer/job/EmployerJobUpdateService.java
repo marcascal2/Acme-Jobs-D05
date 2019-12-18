@@ -89,7 +89,6 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
-		//JOB MUST HAVE A DESCRIPTOR IN FINAL MODE
 		JobStatus status = entity.getStatus();
 
 		if (status != null && status.equals(JobStatus.PUBLISHED)) {
@@ -98,8 +97,6 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 			errors.state(request, hasDescriptor, "descriptor", "employer.job.form.error.descriptor");
 		}
 
-		//CANNOR REPEAT THE JOB REFERENCE
-
 		String newReference = entity.getReference();
 		if (newReference != null && newReference != "") {
 			Job repeatedJob = this.repository.findOneByReference(newReference);
@@ -107,17 +104,15 @@ public class EmployerJobUpdateService implements AbstractUpdateService<Employer,
 			errors.state(request, referenceIsRepeated, "reference", "employer.job.form.error.reference");
 		}
 
-		//CANNOT BE SPAM IN FINAL MODE
-
 		String title = entity.getTitle();
 		String description = entity.getDescription();
 		String moreInfo = entity.getMoreInfo();
 
 		Collection<SpamWord> spamWords = this.repository.findManyAllSpamWord();
 
-		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
+		errors.state(request, !(status.equals(JobStatus.PUBLISHED) && this.is_spam(title, spamWords)), "title", "employer.job.form.error.spam");
+		errors.state(request, !(status.equals(JobStatus.PUBLISHED) && this.is_spam(description, spamWords)), "description", "employer.job.form.error.spam");
+		errors.state(request, !(status.equals(JobStatus.PUBLISHED) && this.is_spam(moreInfo, spamWords)), "moreInfo", "employer.job.form.error.spam");
 		if (entity.getDescriptor() != null) {
 			String descriptor = entity.getDescriptor().getTitle();
 			errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
