@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.descriptors.Descriptor;
 import acme.entities.jobs.Job;
+import acme.entities.jobs.JobStatus;
 import acme.entities.roles.Employer;
 import acme.entities.spam_words.SpamWord;
 import acme.framework.components.Errors;
@@ -81,47 +82,22 @@ public class EmployerJobCreateService implements AbstractCreateService<Employer,
 		assert entity != null;
 		assert errors != null;
 
-		String newReference = request.getModel().getString("reference");
-		String[] newJob = newReference.split("-");
-		String newRefJob = newJob[1].trim();
+		//CANNOT REPEAT THE JOB REFERENCE
 
-		//CANNOT HAS A NULL DESCRIPTOR IN FINAL MODE
-
-		String descriptor = request.getModel().getString("descriptor");
-
-		Collection<Job> totalJobs = this.repository.findAllJobs();
-		for (Job job : totalJobs) {
-			String oldReference = job.getReference();
-			String[] oldJob = oldReference.split("-");
-			String oldRefJob = oldJob[1].trim();
-
-			errors.state(request, !oldRefJob.equals(newRefJob), "reference", "employer.job.form.error.ref");
-			errors.state(request, !oldReference.equals(newReference), "reference", "employer.job.form.error.reference");
+		String newReference = entity.getReference();
+		if (newReference != null && newReference != "") {
+			Job repeatedJob = this.repository.findOneByReference(newReference);
+			boolean referenceIsRepeated = repeatedJob != null;
+			errors.state(request, !referenceIsRepeated, "reference", "employer.job.form.error.reference");
 		}
 
-		//CANNOR REPEAT THE JOB REFERENCE
+		//CHECK THAT IS NOT FINAL MODE
 
-		String reference = request.getModel().getString("reference");
-		Collection<Job> jobs = this.repository.findManyByEmployerId(request.getPrincipal().getActiveRoleId());
-
-		for (Job job : jobs) {
-			errors.state(request, !reference.equals(job.getReference()), "reference", "employer.job.form.error.reference");
+		JobStatus status = entity.getStatus();
+		if (status != null) {
+			boolean isFinalMode = status.equals(JobStatus.PUBLISHED);
+			errors.state(request, !isFinalMode, "status", "employer.duty.form.error.percentage");
 		}
-
-		//CANNOT BE SPAM IN FINAL MODE
-
-		String title = request.getModel().getString("title");
-		String description = request.getModel().getString("description");
-		String moreInfo = request.getModel().getString("moreInfo");
-
-		Collection<SpamWord> spamWords = this.repository.findManyAllSpamWord();
-
-		errors.state(request, !this.is_spam(reference, spamWords), "reference", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(title, spamWords), "title", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(description, spamWords), "description", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(moreInfo, spamWords), "moreInfo", "employer.job.form.error.spam");
-		errors.state(request, !this.is_spam(descriptor, spamWords), "descriptor", "employer.job.form.error.spam");
-
 	}
 
 	@Override

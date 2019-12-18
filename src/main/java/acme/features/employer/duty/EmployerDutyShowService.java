@@ -9,7 +9,6 @@ import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -23,20 +22,18 @@ public class EmployerDutyShowService implements AbstractShowService<Employer, Du
 	//AbstractShowService<Employer, Job>
 	@Override
 	public boolean authorise(final Request<Duty> request) {
+
 		assert request != null;
-		boolean result;
-		int dutyId;
-		Job job;
-		Duty duty;
-		Employer employer;
-		Principal principal;
-		dutyId = request.getModel().getInteger("id");
-		duty = this.repository.findOneById(dutyId);
-		job = duty.getDescriptor().getJob();
-		employer = job.getEmployer();
-		principal = request.getPrincipal();
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
-		return result;
+		int employerId = request.getPrincipal().getActiveRoleId();
+		int dutyId = request.getModel().getInteger("id");
+
+		Duty duty = this.repository.findOneById(dutyId);
+		Job job = duty.getDescriptor().getJob();
+		Employer employer = this.repository.findEmployerById(employerId);
+
+		boolean isAuthorised = job.getEmployer().equals(employer);
+
+		return isAuthorised;
 	}
 
 	@Override

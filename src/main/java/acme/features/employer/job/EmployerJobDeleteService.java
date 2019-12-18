@@ -1,7 +1,6 @@
 
 package acme.features.employer.job;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import acme.entities.roles.Employer;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Principal;
 import acme.framework.services.AbstractDeleteService;
 
 @Service
@@ -23,23 +21,21 @@ public class EmployerJobDeleteService implements AbstractDeleteService<Employer,
 	@Autowired
 	EmployerJobRepository repository;
 
-
 	//AbstractDeleteService<Employe, Job>
+
 
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
-		boolean result;
-		int jobId;
-		Job job;
-		Employer employer;
-		Principal principal;
-		jobId = request.getModel().getInteger("id");
-		job = this.repository.findOneById(jobId);
-		employer = job.getEmployer();
-		principal = request.getPrincipal();
-		result = job.isFinalMode() || !job.isFinalMode() && employer.getUserAccount().getId() == principal.getAccountId();
-		return result;
+		int jobId = request.getModel().getInteger("id");
+		int employerId = request.getPrincipal().getActiveRoleId();
+
+		Job job = this.repository.findOneById(jobId);
+		Employer employer = this.repository.findEmployerById(employerId);
+
+		boolean isAuthorised = job.getEmployer().equals(employer);
+
+		return isAuthorised;
 	}
 
 	@Override
@@ -75,19 +71,21 @@ public class EmployerJobDeleteService implements AbstractDeleteService<Employer,
 		assert entity != null;
 		assert errors != null;
 
-		Collection<Application> applications = new ArrayList<Application>();
-		applications.addAll(entity.getApplication());
-		for (Application a : applications) {
-			errors.state(request, a.getWorker() == null, "application", "employer.job.form.error.application");
-		}
+		Collection<Application> applications = entity.getApplication();
+		boolean canDelete = applications.stream().anyMatch(x -> x.getWorker() != null);
+		errors.state(request, !canDelete, "application", "employer.job.form.error.application");
 	}
 
 	@Override
 	public void delete(final Request<Job> request, final Job entity) {
 		assert request != null;
 		assert entity != null;
-		this.repository.deleteAll(entity.getDescriptor().getDuty());
-		this.repository.delete(entity.getDescriptor());
+		if (entity.getDescriptor() != null) {
+			if (entity.getDescriptor().getDuty() != null) {
+				this.repository.deleteAll(entity.getDescriptor().getDuty());
+			}
+			this.repository.delete(entity.getDescriptor());
+		}
 		this.repository.delete(entity);
 
 	}

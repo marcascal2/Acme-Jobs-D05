@@ -5,15 +5,15 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:form readonly="false">
-	<acme:form-textbox code="employer.job.form.label.reference" path="reference" />
+	<acme:form-textbox code="employer.job.form.label.reference" path="reference" placeholder = "EEEE-JJJJ"/>
 	<acme:form-textbox code="employer.job.form.label.title" path="title" />
-	<acme:form-textbox code="employer.job.form.label.status" path="status" />
+	<acme:form-textbox code="employer.job.form.label.status" path="status" placeholder="PUBLISHED or DRAFT"/>
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline" />
 	<acme:form-money code="employer.job.form.label.salary" path="salary" />
 	<acme:form-url code="employer.job.form.label.moreInfo" path="moreInfo" />
 	<acme:form-textarea code="employer.job.form.label.description" path="description" />
 
-	<acme:form-textbox code="employer.job.form.label.descriptor" path="descriptor" />
+	<acme:form-textbox code="employer.job.form.label.descriptor" path="descriptor"/>
 	<acme:form-errors path="application" />
 	<acme:form-errors path="percentageTimeForWeek" />
 	<acme:form-errors path="finalMode" />
@@ -22,7 +22,7 @@
 	<jstl:if test="${not empty descriptor}">
 		<acme:form-submit method="get" code="employer.job.form.button.duty" action="/employer/duty/list?descriptor_id=${descriptorId }"/>
 		<jstl:if test="${status == 'DRAFT' && not sumPercentage}">
-			<acme:form-submit method="get" code="employer.duty.form.button.create" action="/employer/duty/create?descriptor_id=${descriptorId }"/>
+			<acme:form-submit method="get" code="employer.job.duty.form.button.create" action="/employer/duty/create?descriptor_id=${descriptorId }"/>
 		</jstl:if>
 	</jstl:if>
 		<acme:form-submit method="get" code="employer.job.form.button.application" action="/employer/application/list_mine?job_id=${idJob}"/>

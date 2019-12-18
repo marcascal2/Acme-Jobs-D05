@@ -15,17 +15,17 @@
        drop 
        foreign key `FKmbjdoxi3o93agxosoate4sxbt`;
 
+    alter table `audit_record` 
+       drop 
+       foreign key `FKmryxi458u0xeo07s40poxshk6`;
+
+    alter table `audit_record` 
+       drop 
+       foreign key `FKlbvbyimxf6pxvbhkdd4vfhlnd`;
+
     alter table `auditor` 
        drop 
        foreign key FK_clqcq9lyspxdxcp6o4f3vkelj;
-
-    alter table `auditor_record` 
-       drop 
-       foreign key `FK2ck5stk38bbuyidbdwsm7nndj`;
-
-    alter table `auditor_record` 
-       drop 
-       foreign key `FKcpwoo69w5dhtr8nvg0xhl9qv9`;
 
     alter table `auditors_request` 
        drop 
@@ -95,9 +95,9 @@
 
     drop table if exists `application`;
 
-    drop table if exists `auditor`;
+    drop table if exists `audit_record`;
 
-    drop table if exists `auditor_record`;
+    drop table if exists `auditor`;
 
     drop table if exists `auditors_request`;
 
